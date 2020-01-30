@@ -1,0 +1,63 @@
+<div class="contentStyle">
+    <!-- <router-outlet></router-outlet> -->
+    <div class="row">
+        <h1>Personel Yönetimi</h1>
+      </div>
+      <div class="row">
+        <h5>Yeni Personel Ekle</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-10">
+          <form>
+              <div class="form-group">
+                <label for="examplebaslik">İsim</label>
+                <input type="text" class="form-control" id="examplebaslik" aria-describedby="emailHelp">
+              </div>
+              <div class="form-group">
+                <label for="examplealtbaslik">Soyisim</label>
+                <input type="text" class="form-control" id="examplealtbaslik">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect2">Yetkisi</label>
+                <select multiple class="form-control" id="exampleFormControlSelect2">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <!-- <form>
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Slider Resmi Ekle</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                  </div>
+                </form> -->
+              <button type="submit" class="btn btn-success">Kaydet</button>
+            </form>
+        </div>
+      </div>
+      
+      <div class="row" style="margin-top: 3%;">
+        <h5>Aktif Personeller</h5>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-10">
+          <!-- ngFor duyuru döngüsü burada olacak -->
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Personel adı"
+                aria-label="Personel adı" aria-describedby="button-addon4">
+              <div class="input-group-append" id="button-addon4">
+                <button class="btn btn-info" type="button">Yetkisi</button>
+                <button class="btn btn-warning" type="button">Güncelle</button>
+                <button class="btn btn-danger" type="button">Sil</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      
+</div>

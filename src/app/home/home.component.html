@@ -1,0 +1,188 @@
+<body>
+  <div class="row topmenu">
+    <div class="col-md-3">
+      <img class="logoFiyat" src="../assets/homepage/logonamed.png" alt="fiyatvar.com" height="75" width="125">
+    </div>
+    <div class="col-md-6"></div>
+    <div class="col-md-3 text-center">
+      <p class="userName">username</p>
+    </div>
+  </div>
+  <div class="row navbar">
+    <!-- Wrapper -->
+    <div class="d-flex" id="wrapper">
+
+      <!-- Sidebar -->
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading"></div>
+        <div class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action bg-light">Ürün Arama</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light">Kategori Arama</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light">Mağaza Arama</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light">Kullanıcı Arama</a>
+        </div>
+      </div>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <button class="btn btn-primary" id="menu-toggle">Menu</button>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" routerLink="/home">Anasayfa <span class="sr-only">(current)</span></a>
+              </li>
+              <!-- <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li> -->
+
+              <!-- İçerik Kontrolü -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  İçerik Kontrolü
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="contentcontroller/pages">Sayfalar</a>
+                  <a class="dropdown-item" routerLink="contentcontroller/announcements">Duyuru Yönetimi</a>
+                  <a class="dropdown-item" routerLink="contentcontroller/slider">Slider Yönetimi</a>
+                  <a class="dropdown-item" routerLink="contentcontroller/banner">Banner Yönetimi</a>
+                  <a class="dropdown-item" routerLink="contentcontroller/adds">Reklam Yönetimi</a>
+                  <a class="dropdown-item" routerLink="contentcontroller/promotions">Promosyonlar Yönetimi</a>
+                  <a class="dropdown-item" routerLink="contentcontroller/mails">Mail Bülteni</a>
+                </div>
+              </li>
+
+              <!-- Kategori Kontrolü -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Kategori & Ürünler
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="categorycontroller/categories">Kategori</a>
+                  <a class="dropdown-item" routerLink="categorycontroller/products">Ürünler</a>
+                </div>
+              </li>
+
+              <!-- Mağazalar Kontrolü -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Mağazalar
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="shopcontroller/shops">Mağazalar</a>
+                  <a class="dropdown-item" routerLink="shopcontroller/payment">Mağaza Ödeme Yöntemleri</a>
+                  <a class="dropdown-item" routerLink="shopcontroller/shipment">Mağaza Kargo Yöntemleri </a>
+                  <!-- <a class="dropdown-item" href="#">Mağaza Yorumları</a> -->
+                  <a class="dropdown-item" routerLink="shopcontroller/support">Mağaza Destek Bildirimleri</a>
+                </div>
+              </li>
+
+              <!-- Kullanıcılar Kontrolü -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Kullanıcılar
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="usercontroller/users">Kullanıcılar</a>
+                  <a class="dropdown-item" routerLink="usercontroller/pointsystem">Kullanıcı Puan Sistemi</a>
+                  <a class="dropdown-item" routerLink="usercontroller/chequesystem">Çek Talepleri</a>
+                  <a class="dropdown-item" routerLink="usercontroller/frontrunner">Puan Rekortmenleri</a>
+                </div>
+              </li>
+
+              <!-- Blog Kontrolü -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Blog Yönetimi
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item">Blog Yazıları</a>
+                  <a class="dropdown-item">Blog Kategorileri</a>
+                </div>
+              </li>
+
+              <!-- Güncelleme Kontrolü -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Güncelleme
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="updatecontroller/cronjob">Cronjob Ürünlerini Güncelle</a>
+                  <a class="dropdown-item" routerLink="updatecontroller/xml">Xml Ürünlerini Güncelle</a>
+                </div>
+              </li>
+
+              <!-- Raporlar Kontrolü -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Raporlar
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="reportcontroller/click">Tıklanma Rapoları</a>
+                  <!-- <a class="dropdown-item" href="#">Mağaza Göre Tıklanma Raporları</a>
+                  <a class="dropdown-item" href="#">7 Günün En Çok Tıklanan Ürünleri</a>
+                  <a class="dropdown-item" href="#">1 Ayın En Çok Tıklanan Ürünleri</a>
+                  <a class="dropdown-item" href="#">En Çok Tıklanan Ürünler</a> -->
+                  <a class="dropdown-item" routerLink="reportcontroller/search">Arama Raporları</a>
+                  <!-- <a class="dropdown-item" href="#">En Çok Aranan Kelimeler</a> -->
+                </div>
+              </li>
+
+              <!-- Personel Yönetimi Kontrolü -->
+              <li class="nav-item">
+                <a class="nav-link" routerLink="staffcontroller">Personel Yönetimi<span class="sr-only">(current)</span></a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Personel Yönetimi
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="staffcontroller/staffs">Personeller</a>
+                  <a class="dropdown-item" href="#">Personel Ekle</a>
+                  <a class="dropdown-item" href="#">Personel Statüleri</a>
+                  <a class="dropdown-item" href="#">Personel Statüleri Yetkilendirmeleri</a>
+                </div>
+              </li> -->
+
+              <!-- Muhasabe Yönetimi Kontrolü -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Muhasebe Yönetimi
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="accountingcontroller/credits">Kredi Yüklemeleri</a>
+                  <a class="dropdown-item" routerLink="accountingcontroller/livesupport">Canlı Destek Alımları</a>
+                  <a class="dropdown-item" routerLink="accountingcontroller/adds">Reklam Alımları</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        
+          <div class="container-fluid">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+
+      <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+  </div>
+</body>

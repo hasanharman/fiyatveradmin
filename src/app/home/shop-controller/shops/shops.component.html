@@ -1,0 +1,50 @@
+<div class="row">
+    <h1>Mağaza Yönetimi</h1>
+  </div>
+  <div class="row">
+    <h5>Yeni Mağaza Ekle</h5>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <form>
+          <div class="form-group">
+            <label for="examplebaslik">Mağaza Adı</label>
+            <input type="text" class="form-control" id="examplebaslik" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="examplealtbaslik">Mağaza Açıklaması</label>
+            <input type="text" class="form-control" id="examplealtbaslik">
+          </div>
+          <form>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Mağaza Resmi Ekle</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              </div>
+            </form>
+          <button type="submit" class="btn btn-success">Kaydet</button>
+        </form>
+    </div>
+  </div>
+  
+  <div class="row" style="margin-top: 3%;">
+    <h5>Aktif Mağazalar</h5>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10">
+      <!-- ngFor duyuru döngüsü burada olacak -->
+      <div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="mağaza adı"
+            aria-label="mağaza adı" aria-describedby="button-addon4">
+          <div class="input-group-append" id="button-addon4">
+            <button class="btn btn-warning" type="button">Güncelle</button>
+            <!-- Güncelle Mağaza sayfasına yönlendirir, isme göre yeni sayfa oluşturmalıyız,
+                    ya da hidden metodu ile yorumları açacağız  -->
+            <button class="btn btn-danger" type="button">Sil</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
