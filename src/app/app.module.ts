@@ -41,10 +41,12 @@ import { ClickComponent } from './home/report-controller/click/click.component';
 import { SearchComponent } from './home/report-controller/search/search.component';
 import { CreditsComponent } from './home/accounting-controller/credits/credits.component';
 import { LivesupportComponent } from './home/accounting-controller/livesupport/livesupport.component';
+import { HomePageComponent } from './home/home-page/home-page.component';
 
 const appRoutes: Routes = [
   {
     path: 'home', component: HomeComponent, children: [
+      { path: 'homepage',      component: HomePageComponent },
       { path: 'contentcontroller',      component: ContentControllerComponent, children:[
         { path: 'pages',      component: PagesComponent },
         { path: 'announcements',      component: AnnouncementsComponent },
@@ -88,7 +90,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: '',
-    redirectTo: '/home',
+    redirectTo: 'home/homepage',
     pathMatch: 'full'
   },
   // { path: '**', component: PageNotFoundComponent }
@@ -133,6 +135,7 @@ const appRoutes: Routes = [
     SearchComponent,
     CreditsComponent,
     LivesupportComponent,
+    HomePageComponent,
   ],
   imports: [
     RouterModule.forRoot(

@@ -1,1 +1,72 @@
-<p>click works!</p>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Tıklanma Raporları</h1>
+  </div>
+  <div class="col-md-4">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Filtrele
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="#">En çok tıklanan mağazalar</a>
+            <a class="dropdown-item" href="#">Haftanın en çok tıklanan ürünleri</a>
+            <a class="dropdown-item" href="#">Ayın en çok tıklanan ürünleri</a>
+            <a class="dropdown-item" href="#">Tüm zamanların çok tıklanan ürünleri</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top:2%;">
+  <div class="col-md-8">
+    <h5>Top 10 Ürünler</h5>
+    <!-- NgFor ya da DB'den gelen ürünlerin listelenmesi için, "badge-pill sayıyı göstermesi için" -->
+    <div class="topcategories">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Cras justo odio
+          <span class="badge badge-primary badge-pill">1</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Dapibus ac facilisis in
+          <span class="badge badge-primary badge-pill">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Morbi leo risus
+          <span class="badge badge-primary badge-pill">3</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Cras justo odio
+          <span class="badge badge-primary badge-pill">4</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Dapibus ac facilisis in
+          <span class="badge badge-primary badge-pill">5</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Morbi leo risus
+          <span class="badge badge-primary badge-pill">6</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Cras justo odio
+          <span class="badge badge-primary badge-pill">7</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Dapibus ac facilisis in
+          <span class="badge badge-primary badge-pill">8</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Morbi leo risus
+          <span class="badge badge-primary badge-pill">9</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Morbi leo risus
+          <span class="badge badge-primary badge-pill">10</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
