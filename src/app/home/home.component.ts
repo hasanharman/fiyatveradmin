@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,12 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $("#menu-toggle").click(function (e) {
+      console.log('basıldı');
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    
   }
-
 }
+

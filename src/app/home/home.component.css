@@ -11,10 +11,14 @@ body {
     margin-bottom: 0.3em!important;
   }
   .userName {
-    margin: 1em;
+    margin-top: 2em!important;
     margin-bottom: 0.3em!important;
   }
   
+  .menubutton {
+    background-color: #009966;
+    color: aliceblue;
+  }
   #sidebar-wrapper {
     min-height: 100vh;
     margin-left: -15rem;
@@ -34,7 +38,7 @@ body {
   }
   
   #page-content-wrapper {
-    min-width: 100vw;
+    min-width: 100%;
   }  
   #wrapper.toggled #sidebar-wrapper {
     margin-left: 0;

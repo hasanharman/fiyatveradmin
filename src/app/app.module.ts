@@ -42,6 +42,8 @@ import { SearchComponent } from './home/report-controller/search/search.componen
 import { CreditsComponent } from './home/accounting-controller/credits/credits.component';
 import { LivesupportComponent } from './home/accounting-controller/livesupport/livesupport.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
+declare var $: any;
+
 
 const appRoutes: Routes = [
   {
