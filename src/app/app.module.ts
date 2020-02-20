@@ -42,6 +42,7 @@ import { SearchComponent } from './home/report-controller/search/search.componen
 import { CreditsComponent } from './home/accounting-controller/credits/credits.component';
 import { LivesupportComponent } from './home/accounting-controller/livesupport/livesupport.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
+import { AgreementComponent } from './home/content-controller/agreement/agreement.component';
 declare var $: any;
 
 
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
         { path: 'adds',      component: AddsComponent },
         { path: 'promotions',      component: PromotionsComponent },
         { path: 'mails',      component: MailsComponent },
+        { path: 'agreement',      component: AgreementComponent }
       ] },
       { path: 'categorycontroller',      component: CategoryControllerComponent, children:[
         { path: 'categories',      component: CategoriesComponent },
@@ -138,6 +140,7 @@ const appRoutes: Routes = [
     CreditsComponent,
     LivesupportComponent,
     HomePageComponent,
+    AgreementComponent,
   ],
   imports: [
     RouterModule.forRoot(
