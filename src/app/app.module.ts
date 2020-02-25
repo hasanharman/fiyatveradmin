@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -42,56 +42,76 @@ import { SearchComponent } from './home/report-controller/search/search.componen
 import { CreditsComponent } from './home/accounting-controller/credits/credits.component';
 import { LivesupportComponent } from './home/accounting-controller/livesupport/livesupport.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
+import { AgreementComponent } from './home/content-controller/agreement/agreement.component';
 declare var $: any;
 
 
 const appRoutes: Routes = [
   {
     path: 'home', component: HomeComponent, children: [
-      { path: 'homepage',      component: HomePageComponent },
-      { path: 'contentcontroller',      component: ContentControllerComponent, children:[
-        { path: 'pages',      component: PagesComponent },
-        { path: 'announcements',      component: AnnouncementsComponent },
-        { path: 'slider',      component: SliderComponent },
-        { path: 'banner',      component: BannerComponent },
-        { path: 'adds',      component: AddsComponent },
-        { path: 'promotions',      component: PromotionsComponent },
-        { path: 'mails',      component: MailsComponent },
-      ] },
-      { path: 'categorycontroller',      component: CategoryControllerComponent, children:[
-        { path: 'categories',      component: CategoriesComponent },
-        { path: 'products',      component: ProductsComponent }
-      ] },
-      { path: 'shopcontroller',      component: ShopControllerComponent, children:[
-        { path: 'shops',      component: ShopsComponent },
-        { path: 'payment',      component: PaymentmethodsComponent },
-        { path: 'shipment',      component: ShipmentmethodsComponent },
-        { path: 'support',      component: ShopsupportComponent }
-      ] },
-      { path: 'usercontroller',      component: UserControllerComponent, children:[
-        { path: 'users',      component: UsersComponent },
-        { path: 'pointsystem',      component: PointSystemComponent },
-        { path: 'chequesystem',      component: ChequeSystemComponent },
-        { path: 'frontrunner',      component: FrontRunnerComponent }
-      ] },
-      { path: 'home/blogcontroller',      component: BlogControllerComponent },
-      { path: 'updatecontroller',      component: UpdateControllerComponent, children:[
-        { path: 'cronjob',      component: CronjobComponent },
-        { path: 'xml',      component: XmlComponent }
-      ] },
-      { path: 'reportcontroller',      component: ReportControllerComponent, children:[
-        { path: 'click',      component: ClickComponent },
-        { path: 'search',      component: SearchComponent }
-      ] },
-      { path: 'staffcontroller',      component: StaffControllerComponent },
-      { path: 'accountingcontroller',      component: AccountingControllerComponent, children:[
-        { path: 'credits',      component: CreditsComponent },
-        { path: 'livesupport',      component: LivesupportComponent },
-        { path: 'adds',      component: AddsComponent }
-      ] },
+      { path: 'homepage', component: HomePageComponent },
+      {
+        path: 'contentcontroller', component: ContentControllerComponent, children: [
+          { path: 'pages', component: PagesComponent },
+          { path: 'announcements', component: AnnouncementsComponent },
+          { path: 'slider', component: SliderComponent },
+          { path: 'banner', component: BannerComponent },
+          { path: 'adds', component: AddsComponent },
+          { path: 'promotions', component: PromotionsComponent },
+          { path: 'mails', component: MailsComponent },
+          { path: 'agreement', component: AgreementComponent }
+        ]
+      },
+      {
+        path: 'categorycontroller', component: CategoryControllerComponent, children: [
+          { path: 'categories', component: CategoriesComponent },
+          { path: 'products', component: ProductsComponent }
+        ]
+      },
+      {
+        path: 'shopcontroller', component: ShopControllerComponent, children: [
+          { path: 'shops', component: ShopsComponent },
+          { path: 'payment', component: PaymentmethodsComponent },
+          { path: 'shipment', component: ShipmentmethodsComponent },
+          { path: 'support', component: ShopsupportComponent }
+        ]
+      },
+      {
+        path: 'usercontroller', component: UserControllerComponent, children: [
+          { path: 'users', component: UsersComponent },
+          { path: 'pointsystem', component: PointSystemComponent },
+          { path: 'chequesystem', component: ChequeSystemComponent },
+          { path: 'frontrunner', component: FrontRunnerComponent }
+        ]
+      },
+      { path: 'home/blogcontroller', component: BlogControllerComponent },
+      {
+        path: 'updatecontroller', component: UpdateControllerComponent, children: [
+          { path: 'cronjob', component: CronjobComponent },
+          { path: 'xml', component: XmlComponent }
+        ]
+      },
+      {
+        path: 'reportcontroller', component: ReportControllerComponent, children: [
+          { path: 'click', component: ClickComponent },
+          { path: 'search', component: SearchComponent }
+        ]
+      },
+      { path: 'staffcontroller', component: StaffControllerComponent },
+      {
+        path: 'accountingcontroller', component: AccountingControllerComponent, children: [
+          { path: 'credits', component: CreditsComponent },
+          { path: 'livesupport', component: LivesupportComponent },
+          { path: 'adds', component: AddsComponent }
+        ]
+      },
     ]
   },
-  { path: '',
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: '',
     redirectTo: 'home/homepage',
     pathMatch: 'full'
   },
@@ -138,6 +158,7 @@ const appRoutes: Routes = [
     CreditsComponent,
     LivesupportComponent,
     HomePageComponent,
+    AgreementComponent,
   ],
   imports: [
     RouterModule.forRoot(
