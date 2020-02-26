@@ -1,1 +1,25 @@
-<p>users works!</p>
+<div class="row">
+  <div class="col-md-10">
+    <form class="example" action="action_page.php">
+      <input type="text" placeholder="Kullanıcı ara" name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <!-- ngFor duyuru döngüsü burada olacak -->
+    <div>
+      <div class="input-group">
+        <div type="text" class="form-control" placeholder="mağaza adı" aria-label="mağaza adı"
+          aria-describedby="button-addon4"></div>
+        <div class="input-group-append" id="button-addon4">
+          <button class="btn btn-warning" type="button">Güncelle</button>
+          <!-- Güncelle Mağaza sayfasına yönlendirir, isme göre yeni sayfa oluşturmalıyız,
+                        ya da hidden metodu ile yorumları açacağız  -->
+          <button class="btn btn-danger" type="button">Sil</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
