@@ -1,1 +1,50 @@
-<p>point-system works!</p>
+<div class="row">
+    <h1>Puan Sistemi</h1>
+  </div>
+  <div class="row">
+    <h5>Yeni Görev Ekle</h5>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <form>
+          <div class="form-group">
+            <label for="examplebaslik">Görev adı</label>
+            <input type="text" class="form-control" id="examplebaslik" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="examplealtbaslik">Puanı</label>
+            <input type="number" class="form-control" id="examplealtbaslik">
+          </div>
+          <div class="form-group">
+            <label for="example-datetime-local-input" class="form-label">Geçerlilik Tarihi</label>
+              <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+            </div>
+          <button type="submit" class="btn btn-success">Kaydet</button>
+        </form>
+    </div>
+  </div>
+  
+  <div class="row" style="margin-top: 3%;">
+    <h5>Aktif Görevler</h5>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10">
+      <!-- ngFor duyuru döngüsü burada olacak -->
+      <div>
+        <div class="input-group">
+          <div type="text" class="form-control" placeholder="var olan görev"
+            aria-label="var olan duyuru" aria-describedby="button-addon4"></div>
+            <div type="text" class="form-control" placeholder="var olan puan"
+            aria-label="var olan puan" aria-describedby="button-addon4"></div>
+            <div type="text" class="form-control" placeholder="var olan tarih"
+            aria-label="var olan tarih" aria-describedby="button-addon4"></div>
+          <div class="input-group-append" id="button-addon4">
+            <button class="btn btn-warning" type="button">Güncelle</button>
+            <button class="btn btn-danger" type="button">Sil</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
