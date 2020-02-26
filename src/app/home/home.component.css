@@ -34,28 +34,30 @@ body {
   }
   
   #sidebar-wrapper .list-group {
-    width: 15rem;
+    width: 300px;
   }
   
   #page-content-wrapper {
-    min-width: 100%;
+    width: calc(100vw - 300px);
+    -webkit-transition: width .25s ease-out;
+    -moz-transition: width .25s ease-out;
+    -o-transition: width .25s ease-out;
+    transition: width .25s ease-out;
   }  
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
-  }
+
   
   @media (min-width: 768px) {
     #sidebar-wrapper {
       margin-left: 0;
     }
   
-    #page-content-wrapper {
-      min-width: 0;
-      width: 100%;
-    }
   
     #wrapper.toggled #sidebar-wrapper {
-      margin-left: -15rem;
+      margin-left: -300px;
+    }
+
+    #page-content-wrapper.toggled {
+      width: 100vw;
     }
   }
   /* 

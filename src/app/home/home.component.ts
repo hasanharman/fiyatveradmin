@@ -16,9 +16,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     $("#menu-toggle").click(function (e) {
-      console.log('basıldı');
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
+      $("#page-content-wrapper").toggleClass("toggled");
     });
     
   }

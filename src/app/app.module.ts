@@ -28,8 +28,8 @@ import { BannerComponent } from './home/content-controller/banner/banner.compone
 import { CategoriesComponent } from './home/category-controller/categories/categories.component';
 import { ProductsComponent } from './home/category-controller/products/products.component';
 import { ShopsComponent } from './home/shop-controller/shops/shops.component';
-import { PaymentmethodsComponent } from './home/shop-controller/paymentmethods/paymentmethods.component';
-import { ShipmentmethodsComponent } from './home/shop-controller/shipmentmethods/shipmentmethods.component';
+// import { PaymentmethodsComponent } from './home/shop-controller/paymentmethods/paymentmethods.component';
+// import { ShipmentmethodsComponent } from './home/shop-controller/shipmentmethods/shipmentmethods.component';
 import { ShopsupportComponent } from './home/shop-controller/shopsupport/shopsupport.component';
 import { UsersComponent } from './home/user-controller/users/users.component';
 import { PointSystemComponent } from './home/user-controller/point-system/point-system.component';
@@ -75,8 +75,8 @@ const appRoutes: Routes = [
       {
         path: 'shopcontroller', component: ShopControllerComponent, children: [
           { path: 'shops', component: ShopsComponent },
-          { path: 'payment', component: PaymentmethodsComponent },
-          { path: 'shipment', component: ShipmentmethodsComponent },
+          // { path: 'payment', component: PaymentmethodsComponent },
+          // { path: 'shipment', component: ShipmentmethodsComponent },
           { path: 'support', component: ShopsupportComponent }
         ]
       },
@@ -151,8 +151,8 @@ const appRoutes: Routes = [
     CategoriesComponent,
     ProductsComponent,
     ShopsComponent,
-    PaymentmethodsComponent,
-    ShipmentmethodsComponent,
+    // PaymentmethodsComponent,
+    // ShipmentmethodsComponent,
     ShopsupportComponent,
     UsersComponent,
     PointSystemComponent,
