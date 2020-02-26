@@ -43,6 +43,10 @@ import { CreditsComponent } from './home/accounting-controller/credits/credits.c
 import { LivesupportComponent } from './home/accounting-controller/livesupport/livesupport.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { AgreementComponent } from './home/content-controller/agreement/agreement.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 declare var $: any;
 
 
@@ -111,6 +115,9 @@ const appRoutes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
+    path: 'signup', component: SignupComponent 
+  },
+  {
     path: '',
     redirectTo: 'home/homepage',
     pathMatch: 'full'
@@ -169,9 +176,21 @@ const appRoutes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

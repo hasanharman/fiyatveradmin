@@ -1,1 +1,11 @@
-<p>signup works!</p>
+<!-- <button class='backbtn btn btn-outline-info' (click)='back()'>LİSTEYE DÖN</button> -->
+<div class='signBody'>
+    <form class='form form-group' [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+      <input id='firstName' class='formG form-control' type='text' formControlName='firstName' placeholder="Enter your name">
+      <input id='lastName' class='formG form-control' type='text' formControlName='lastName' placeholder="Enter your surname">
+      <input id='phone' class='formG form-control' type='text' formControlName='phone' placeholder="Enter your phone">
+      <input id='email' class='formG form-control' type='text' formControlName='email' placeholder="Enter email">
+      <input id='password' class='formG form-control' type='password' formControlName='password' placeholder="Password">
+      <button class='btn btn-success formG' type='submit'>SIGN UP</button>
+    </form>
+  </div>

@@ -1,0 +1,17 @@
+.signBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: calc(100vh - 40px);
+    align-items: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.formG {
+    margin-bottom: 10px;
+    width: 40vw;
+    height: 40px;
+}
