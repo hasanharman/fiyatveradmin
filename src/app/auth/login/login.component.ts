@@ -16,9 +16,9 @@ export class LoginComponent implements OnInit {
   error = '';
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private route: ActivatedRoute, private router: Router) {
-    if (this.auth.currentUserValue) {
-      this.router.navigate(['/home'])
-    }
+    // if (this.auth.currentUserValue) {
+    //   this.router.navigate(['/home'])
+    // }
   }
 
   onSubmit(userData) {

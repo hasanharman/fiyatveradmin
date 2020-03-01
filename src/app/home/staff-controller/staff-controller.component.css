@@ -2,3 +2,13 @@
     width: 75vw;
     margin: 1vw;
 }
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.formG {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+}

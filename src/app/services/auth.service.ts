@@ -45,9 +45,9 @@ signup(firstName: string, lastName: string, phone: string, email: string, passwo
   };
   return this.http.post<Admin>(`${environment.apiUrl}/admin/signup`, {firstName, lastName, phone, email, password}, httpOptions)
     .pipe(map(user => {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
-      console.log(user)
+      // localStorage.setItem('currentUser', JSON.stringify(user));
+      // this.currentUserSubject.next(user);
+      // console.log(user)
       return user;
     }));
 }

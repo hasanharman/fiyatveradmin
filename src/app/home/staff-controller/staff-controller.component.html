@@ -4,19 +4,16 @@
         <h1>Personel Yönetimi</h1>
       </div>
       <div class="row">
-        <h5>Yeni Personel Ekle</h5>
+        <h5>Personel {{state}}</h5>
       </div>
       <div class="row">
         <div class="col-md-10">
-          <form>
-              <div class="form-group">
-                <label for="examplebaslik">İsim</label>
-                <input type="text" class="form-control" id="examplebaslik" aria-describedby="emailHelp">
-              </div>
-              <div class="form-group">
-                <label for="examplealtbaslik">Soyisim</label>
-                <input type="text" class="form-control" id="examplealtbaslik">
-              </div>
+            <form class='form form-group' [formGroup]="checkoutForm">
+              <input id='firstName' class='formG form-control' type='text' formControlName='firstName' value="{{admin.firstName}}" placeholder="Enter your name">
+              <input id='lastName' class='formG form-control' type='text' formControlName='lastName' value="{{admin.lastName}}" placeholder="Enter your surname">
+              <input id='phone' class='formG form-control' type='text' formControlName='phone' value="{{admin.phone}}" placeholder="Enter your phone">
+              <input id='email' class='formG form-control' type='text' formControlName='email' value="{{admin.email}}" placeholder="Enter email">
+              <input id='password' class='formG form-control' type='password' formControlName='password' *ngIf="state == 'Ekle'" placeholder="Password">
               <div class="form-group">
                 <label for="exampleFormControlSelect2">Yetkisi</label>
                 <select multiple class="form-control" id="exampleFormControlSelect2">
@@ -33,7 +30,8 @@
                     <input type="file" class="form-control-file" id="exampleFormControlFile1">
                   </div>
                 </form> -->
-              <button type="submit" class="btn btn-success">Kaydet</button>
+              <button type="submit" class="btn btn-success" (click)="signUp(checkoutForm.value)" *ngIf="state == 'Ekle'">Ekle</button>
+              <button type="submit" class="btn btn-success" (click)="adminUpdate(checkoutForm.value)" *ngIf="state == 'Güncelle'">Güncelle</button>
             </form>
         </div>
       </div>
@@ -45,13 +43,12 @@
       <div class="row">
         <div class="col-md-10">
           <!-- ngFor duyuru döngüsü burada olacak -->
-          <div>
+          <div *ngFor='let data of admins'>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Personel adı"
-                aria-label="Personel adı" aria-describedby="button-addon4">
+              <div class="form-control">{{data.firstName}} {{data.lastName}}</div>
               <div class="input-group-append" id="button-addon4">
                 <button class="btn btn-info" type="button">Yetkisi</button>
-                <button class="btn btn-warning" type="button">Güncelle</button>
+                <button class="btn btn-warning" type="button" (click)="adminSelect(data)">Güncelle</button>
                 <button class="btn btn-danger" type="button">Sil</button>
               </div>
             </div>
