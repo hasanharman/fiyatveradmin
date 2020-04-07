@@ -1,0 +1,32 @@
+
+.btn-search {
+    background:  #009966;
+    border-radius: 0px 5px 5px 0px;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color:  #009966;
+  }
+  .btn-search:link, .btn-search:visited {
+    color: #fff;
+  }
+  .btn-search:active, .btn-search:hover {
+    background: #1c1c1c;
+    color: #fff;
+  }
+  .c1ol1{
+    margin-right: 20vw;
+    margin-left: 1vw;
+  }
+  .c1ol2{
+    margin-right: 20vw;
+}
+
+.buttonRow{
+    float: right!important;
+    margin: 1%;
+}
+
+.shopContact {
+    margin: 1%;
+}
