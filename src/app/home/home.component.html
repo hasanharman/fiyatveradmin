@@ -64,20 +64,87 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item active">
-                <a class="nav-link" routerLink="homepage">Anasayfa <span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="homepage" style="cursor:pointer">Anasayfa <span class="sr-only">(current)</span></a>
               </li>
               <!-- <li class="nav-item">
                   <a class="nav-link" href="#">Link</a>
                 </li> -->
 
-              <!-- İçerik Kontrolü -->
               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false" style="cursor:pointer">Admin
+                </a>
+                <div class="dropdown-menu dropdown-menu-right multi-level">
+                  <!-- Personel Kontrolü -->
+                  <a class="dropdown-item" routerLink="staffcontroller">Personel Yönetimi<span
+                    class="sr-only">(current)</span></a>
+                  <!-- Personel Kontrolü end-->
+
+                  <!-- İçerik Kontrolü -->
+                  <div class="dropdown-item dropdown-submenu">
+                    <a class=" dropdown-toggle" data-toggle="dropdown">İçerik Kontrolü</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" routerLink="contentcontroller/announcements">Duyuru Yönetimi</a>
+                      <a class="dropdown-item" routerLink="contentcontroller/slider">Slider Yönetimi</a>
+                      <a class="dropdown-item" routerLink="contentcontroller/banner">Banner Yönetimi</a>
+                      <a class="dropdown-item" routerLink="contentcontroller/adds">Reklam Yönetimi</a>
+                      <a class="dropdown-item" routerLink="contentcontroller/promotions">Promosyonlar Yönetimi</a>
+                      <a class="dropdown-item" routerLink="contentcontroller/mails">Mail Bülteni</a>
+                      <a class="dropdown-item" routerLink="contentcontroller/agreement">Sözleşme Yönetimi</a>
+                    </div>
+                  </div>
+                  <!-- İçerik Kontrolü end-->
+
+                  <!-- Kategori Kontrolü -->
+                  <div class="dropdown-item dropdown-submenu">
+                    <a class=" dropdown-toggle" data-toggle="dropdown">Kategori Kontrolü</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" routerLink="categorycontroller/categories">Kategori</a>
+                      <a class="dropdown-item" routerLink="categorycontroller/products">Ürünler</a>
+                    </div>
+                  </div>
+                  <!-- Kategori Kontrolü end-->
+
+
+                  <!-- Güncelleme Kontrolü -->
+                  <div class="dropdown-item dropdown-submenu">
+                    <a class=" dropdown-toggle" data-toggle="dropdown">Güncelleme</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" routerLink="updatecontroller/cronjob">Cronjob Ürünlerini Güncelle</a>
+                      <a class="dropdown-item" routerLink="updatecontroller/xml">Xml Ürünlerini Güncelle</a>
+                    </div>
+                  </div>
+                  <!-- Güncelleme Kontrolü end-->
+
+                  <!-- Raporlar Kontrolü -->
+                  <div class="dropdown-item dropdown-submenu">
+                    <a class=" dropdown-toggle" data-toggle="dropdown">Raporlar</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" routerLink="reportcontroller/click">Tıklanma Rapoları</a>
+                      <a class="dropdown-item" routerLink="reportcontroller/search">Arama Raporları</a>
+                    </div>
+                  </div>
+                  <!-- Raporlar Kontrolü end-->
+
+                  <!-- Blog Kontrolü -->
+                  <div class="dropdown-item dropdown-submenu">
+                    <a class=" dropdown-toggle" data-toggle="dropdown">Blog Yönetimi</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item">Blog Yazıları</a>
+                      <a class="dropdown-item">Blog Kategorileri</a>
+                    </div>
+                  </div>
+                  <!-- Blog Kontrolü end-->
+                </div>
+              </li>
+
+              <!-- İçerik Kontrolü -->
+              <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   İçerik Kontrolü
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <!-- <a class="dropdown-item" routerLink="contentcontroller/pages">Sayfalar</a> -->
                   <a class="dropdown-item" routerLink="contentcontroller/announcements">Duyuru Yönetimi</a>
                   <a class="dropdown-item" routerLink="contentcontroller/slider">Slider Yönetimi</a>
                   <a class="dropdown-item" routerLink="contentcontroller/banner">Banner Yönetimi</a>
@@ -86,10 +153,10 @@
                   <a class="dropdown-item" routerLink="contentcontroller/mails">Mail Bülteni</a>
                   <a class="dropdown-item" routerLink="contentcontroller/agreement">Sözleşme Yönetimi</a>
                 </div>
-              </li>
+              </li> -->
 
               <!-- Kategori Kontrolü -->
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   Kategori & Ürünler
@@ -98,7 +165,7 @@
                   <a class="dropdown-item" routerLink="categorycontroller/categories">Kategori</a>
                   <a class="dropdown-item" routerLink="categorycontroller/products">Ürünler</a>
                 </div>
-              </li>
+              </li> -->
 
               <!-- Mağazalar Kontrolü -->
               <li class="nav-item dropdown">
@@ -108,12 +175,25 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" routerLink="shopcontroller/shops">Mağazalar</a>
-                  <!-- <a class="dropdown-item" routerLink="shopcontroller/payment">Mağaza Ödeme Yöntemleri</a>
-                  <a class="dropdown-item" routerLink="shopcontroller/shipment">Mağaza Kargo Yöntemleri </a> -->
-                  <!-- <a class="dropdown-item" href="#">Mağaza Yorumları</a> -->
                   <a class="dropdown-item" routerLink="shopcontroller/support">Mağaza Destek Bildirimleri</a>
+                  <a class="dropdown-item" routerLink="accountingcontroller/credits">Kredi Yüklemeleri</a>
+                  <a class="dropdown-item" routerLink="accountingcontroller/livesupport">Canlı Destek Alımları</a>
+                  <a class="dropdown-item" routerLink="accountingcontroller/adds">Reklam Alımları</a>
                 </div>
               </li>
+
+              <!-- Muhasabe Yönetimi Kontrolü -->
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Muhasebe Yönetimi
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="accountingcontroller/credits">Kredi Yüklemeleri</a>
+                  <a class="dropdown-item" routerLink="accountingcontroller/livesupport">Canlı Destek Alımları</a>
+                  <a class="dropdown-item" routerLink="accountingcontroller/adds">Reklam Alımları</a>
+                </div>
+              </li> -->
 
               <!-- Kullanıcılar Kontrolü -->
               <li class="nav-item dropdown">
@@ -130,7 +210,7 @@
               </li>
 
               <!-- Blog Kontrolü -->
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   Blog Yönetimi
@@ -139,10 +219,10 @@
                   <a class="dropdown-item">Blog Yazıları</a>
                   <a class="dropdown-item">Blog Kategorileri</a>
                 </div>
-              </li>
+              </li> -->
 
               <!-- Güncelleme Kontrolü -->
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   Güncelleme
@@ -151,29 +231,26 @@
                   <a class="dropdown-item" routerLink="updatecontroller/cronjob">Cronjob Ürünlerini Güncelle</a>
                   <a class="dropdown-item" routerLink="updatecontroller/xml">Xml Ürünlerini Güncelle</a>
                 </div>
-              </li>
+              </li> -->
 
               <!-- Raporlar Kontrolü -->
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   Raporlar
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" routerLink="reportcontroller/click">Tıklanma Rapoları</a>
-                  <!-- <a class="dropdown-item" href="#">Mağaza Göre Tıklanma Raporları</a>
-                  <a class="dropdown-item" href="#">7 Günün En Çok Tıklanan Ürünleri</a>
-                  <a class="dropdown-item" href="#">1 Ayın En Çok Tıklanan Ürünleri</a>
-                  <a class="dropdown-item" href="#">En Çok Tıklanan Ürünler</a> -->
                   <a class="dropdown-item" routerLink="reportcontroller/search">Arama Raporları</a>
-                  <!-- <a class="dropdown-item" href="#">En Çok Aranan Kelimeler</a> -->
                 </div>
-              </li>
+              </li> -->
 
               <!-- Personel Yönetimi Kontrolü -->
-              <li class="nav-item">
-                <a class="nav-link" routerLink="staffcontroller">Personel Yönetimi<span class="sr-only">(current)</span></a>
-              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" routerLink="staffcontroller">Personel Yönetimi<span
+                    class="sr-only">(current)</span></a>
+              </li> -->
+
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
@@ -187,26 +264,15 @@
                 </div>
               </li> -->
 
-              <!-- Muhasabe Yönetimi Kontrolü -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  Muhasebe Yönetimi
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" routerLink="accountingcontroller/credits">Kredi Yüklemeleri</a>
-                  <a class="dropdown-item" routerLink="accountingcontroller/livesupport">Canlı Destek Alımları</a>
-                  <a class="dropdown-item" routerLink="accountingcontroller/adds">Reklam Alımları</a>
-                </div>
-              </li>
+
             </ul>
           </div>
         </nav>
-        
-          <div class="container-fluid">
-            <router-outlet></router-outlet>
-          </div>
+
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
         </div>
+      </div>
 
       <!-- /#page-content-wrapper -->
     </div>

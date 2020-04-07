@@ -10,10 +10,12 @@ declare var $: any;
 export class HomeComponent implements OnInit {
   public admin: Admin
   constructor() {
-    this.admin = JSON.parse(localStorage.getItem('currentUser')).admin;
-    console.log(this.admin);
+    try {
+      this.admin = JSON.parse(localStorage.getItem('currentUser')).admin
+    } catch (error) {
+      console.log(error);
+    }
   }
-
   ngOnInit() {
     $("#menu-toggle").click(function (e) {
       e.preventDefault();
