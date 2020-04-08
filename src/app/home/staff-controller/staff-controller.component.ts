@@ -20,6 +20,7 @@ export class StaffControllerComponent implements OnInit {
   admin: Admin
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private route: ActivatedRoute, private router: Router, public adminService: AdminService) {
     const req = this.adminService.admins();
+    console.log(req)
     req.subscribe(res => {
       // tslint:disable-next-line: forin
       for ( const i in res ) {

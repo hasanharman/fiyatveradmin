@@ -24,7 +24,8 @@ export class AuthService {
 login(email: string, password: string) {
   const httpOptions = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
     })
   };
   return this.http.post<Admin>(`${environment.apiUrl}/admin/signin`, { email, password }, httpOptions)
@@ -37,7 +38,6 @@ login(email: string, password: string) {
 }
 
 signup(firstName: string, lastName: string, phone: string, email: string, password: string) {
-  console.log("girdi")
   const httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*'
