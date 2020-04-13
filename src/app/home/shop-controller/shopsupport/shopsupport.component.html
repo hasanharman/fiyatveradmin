@@ -1,1 +1,80 @@
-<p>shopsupport works!</p>
+<div class="row">
+  <h1>Mağaza Destek Bildirimleri</h1>
+</div>
+<div class="row" style="margin-top: 3%;">
+  <h5>Hızlı Mağaza Ara</h5>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="mağaza numarası gir..">
+      <span class="input-group-btn">
+        <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i></button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 3%;">
+  <h5>Aktif Destek İstekleri</h5>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <!-- ngFor duyuru döngüsü burada olacak -->
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              <div class="row">
+                <div class="c1ol1">Mağaza ID</div>
+                <div class="c1ol2">Mağaza Adı</div>
+                <div class="c1ol3">Tarih</div>
+              </div>
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row">
+              <span>
+                MAĞAZA ŞİKAYETİ moon
+                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                3
+                wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
+                vegan
+                excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                nesciunt
+                you probably haven't heard of them accusamus labore sustainable VHS.
+              </span>
+            </div>
+            <div class="row">
+                <!-- Mağaza Tel no -->
+              <div class="input-group shopContact">
+                <div type="text" class="form-control" placeholder="Mağaza Tel No" aria-label="magazatel"
+                  aria-describedby="button-addon4"></div>
+                <div class="input-group-append" id="button-addon4">
+                </div>
+              </div>
+               <!-- Mağaza Tel Email -->
+              <div class="input-group shopContact">
+                <div type="text" class="form-control" placeholder="Mağaza Email" aria-label="magazamail"
+                  aria-describedby="button-addon4"></div>
+                <div class="input-group-append" id="button-addon4">
+                </div>
+              </div>
+            </div>
+            <div class="row buttonRow">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-success">Tamamlandı</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

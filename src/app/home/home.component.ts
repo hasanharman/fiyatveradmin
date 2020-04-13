@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   public admin: Admin
   constructor() {
     try {
-      this.admin = JSON.parse(localStorage.getItem('currentUser'));
+      this.admin = JSON.parse(localStorage.getItem('currentUser')).admin;
       console.log(this.admin)
     } catch (error) {
       console.log(error);

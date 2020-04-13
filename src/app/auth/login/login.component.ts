@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
   onSubmit(userData) {
     this.auth.login(userData.email, userData.password).subscribe(res => {
       this.router.navigate([this.returnUrl])
-      setTimeout(()=>{
-        location.reload();
-      }, 3);
+      // setTimeout(()=>{
+      //   location.reload();
+      // }, 3);
     }, error => {
       this.error = error;
     })
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       email: '',
       password: ''
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/lists';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home/homepage';
     console.log(this.returnUrl)
   }
 

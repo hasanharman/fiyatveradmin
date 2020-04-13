@@ -8,20 +8,20 @@
       </div>
       <div class="row">
         <div class="col-md-10">
-            <form class='form form-group' [formGroup]="checkoutForm">
-              <input id='firstName' class='formG form-control' type='text' formControlName='firstName' value="{{admin.firstName}}" placeholder="Enter your name">
-              <input id='lastName' class='formG form-control' type='text' formControlName='lastName' value="{{admin.lastName}}" placeholder="Enter your surname">
-              <input id='phone' class='formG form-control' type='text' formControlName='phone' value="{{admin.phone}}" placeholder="Enter your phone">
-              <input id='email' class='formG form-control' type='text' formControlName='email' value="{{admin.email}}" placeholder="Enter email">
-              <input id='password' class='formG form-control' type='password' formControlName='password' *ngIf="state == 'Ekle'" placeholder="Password">
+            <form class='form form-group'>
+              <input id='firstName' class='formG form-control' type='text' name="firstName" [(ngModel)]="admin.firstName" value="{{admin.firstName}}" placeholder="Enter your name">
+              <input id='lastName' class='formG form-control' type='text' name="lastName" [(ngModel)]="admin.lastName" value="{{admin.lastName}}" placeholder="Enter your surname">
+              <input id='phone' class='formG form-control' type='text' name="phone" [(ngModel)]="admin.phone" value="{{admin.phone}}" placeholder="Enter your phone">
+              <input id='email' class='formG form-control' type='text' name="email" [(ngModel)]="admin.email" value="{{admin.email}}" placeholder="Enter email">
+              <input id='password' class='formG form-control' type='password' name="password" [(ngModel)]="admin.password" *ngIf="state == 'Ekle'" placeholder="Password">
               <div class="form-group">
                 <label for="exampleFormControlSelect2">Yetkisi</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <select class="form-control" name="authority" [value]="admin.authority" [(ngModel)]="admin.authority" id="exampleFormControlSelect2">
+                  <option value=0>0</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
                 </select>
               </div>
               <!-- <form>
@@ -30,8 +30,8 @@
                     <input type="file" class="form-control-file" id="exampleFormControlFile1">
                   </div>
                 </form> -->
-              <button type="submit" class="btn btn-success" (click)="signUp(checkoutForm.value)" *ngIf="state == 'Ekle'">Ekle</button>
-              <button type="submit" class="btn btn-success" (click)="adminUpdate(checkoutForm.value)" *ngIf="state == 'Güncelle'">Güncelle</button>
+              <button type="submit" class="btn btn-success" (click)="signUp(admin)" *ngIf="state == 'Ekle'">Ekle</button>
+              <button type="submit" class="btn btn-success" (click)="adminUpdate(admin)" *ngIf="state == 'Güncelle'">Güncelle</button>
             </form>
         </div>
       </div>

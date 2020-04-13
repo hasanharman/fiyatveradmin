@@ -28,9 +28,7 @@ export class AdminService {
 
   public async update(admin: Admin) {
     const data = admin
-    return await this.http.post<Admin>(`${environment.apiUrl}/admin/update`, data).subscribe(user => {
-      return user;
-    })
+    return await this.http.post<Admin>(`${environment.apiUrl}/admin/update`, data);
   }
 
 }

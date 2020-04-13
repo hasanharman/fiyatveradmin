@@ -24,8 +24,7 @@ export class AuthService {
 login(email: string, password: string) {
   const httpOptions = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json'
+      'Access-Control-Allow-Origin': '*'
     })
   };
   return this.http.post<Admin>(`${environment.apiUrl}/admin/signin`, { email, password }, httpOptions)
@@ -43,13 +42,19 @@ signup(firstName: string, lastName: string, phone: string, email: string, passwo
       'Access-Control-Allow-Origin': '*'
     })
   };
-  return this.http.post<Admin>(`${environment.apiUrl}/admin/signup`, {firstName, lastName, phone, email, password}, httpOptions)
+  return this.http.post<Admin>(`${environment.apiUrl}/admin/signup`, {firstName, lastName, phone, email, password, "authority": 0}, httpOptions)
     .pipe(map(user => {
       // localStorage.setItem('currentUser', JSON.stringify(user));
       // this.currentUserSubject.next(user);
       // console.log(user)
       return user;
     }));
+}
+
+me(token: String) {
+  return this.http.get(`${environment.apiUrl}/admin/me`).pipe(map(user => {
+    return user;
+  }));
 }
 
 async logout() {
