@@ -7,10 +7,10 @@
     <div class="row">
       <div class="col-md-10">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="yeni duyuru"
-            aria-label="yeni duyuru" aria-describedby="button-addon4">
+          <input type="text" class="form-control" placeholder="yeni duyuru" name="announcement" value="{{selectedAnnouncement.announcement}}"
+            aria-label="yeni duyuru" aria-describedby="button-addon4" [(ngModel)]="selectedAnnouncement.announcement">
           <div class="input-group-append" id="button-addon4">
-            <button class="btn btn-success" type="button">Ekle</button>
+            <button class="btn btn-success" type="button" (click)="add(selectedAnnouncement)">Ekle</button>
           </div>
         </div>
       </div>
@@ -24,12 +24,11 @@
       <div class="col-md-10">
         <!-- ngFor duyuru döngüsü burada olacak -->
         <div>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="var olan duyuru"
-              aria-label="var olan duyuru" aria-describedby="button-addon4">
+          <div class="input-group" *ngFor="let announcement of announcements; let i = index">
+            <input class="form-control" value="{{announcement.announcement}}" name="announcement" [(ngModel)]="announcement.announcement">
             <div class="input-group-append" id="button-addon4">
-              <button class="btn btn-warning" type="button">Güncelle</button>
-              <button class="btn btn-danger" type="button">Sil</button>
+              <button class="btn btn-warning" type="button" (click)="update(announcement)">Güncelle</button>
+              <button class="btn btn-danger" type="button" (click)="remove(announcement._id, i)">Sil</button>
             </div>
           </div>
         </div>

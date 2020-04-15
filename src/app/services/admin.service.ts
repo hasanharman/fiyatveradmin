@@ -31,4 +31,8 @@ export class AdminService {
     return await this.http.post<Admin>(`${environment.apiUrl}/admin/update`, data);
   }
 
+  public remove(id: string): Observable<object> {
+    return this.http.post<Admin>(`${environment.apiUrl}/admin/delete`, {"_id": id});
+  }
+
 }

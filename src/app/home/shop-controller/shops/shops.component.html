@@ -9,70 +9,71 @@
     <div class="col-md-5">
       <div class="form-group">
         <label for="yetkili">Yetkili Adı</label>
-        <input type="text" class="form-control" id="yetkili">
+        <input type="text" class="form-control" id="yetkili" name="firstName" value="{{selectedStore.firstName}}" [(ngModel)]="selectedStore.firstName">
       </div>
       <div class="form-group">
         <label for="yetkilisoy">Yetkili Soyadı</label>
-        <input type="text" class="form-control" id="yetkilisoy">
+        <input type="text" class="form-control" id="yetkilisoy" name="lastName" value="{{selectedStore.lastName}}" [(ngModel)]="selectedStore.lastName">
       </div>
       <div class="form-group">
         <label for="yetkilitc">Yetkili TC</label>
-        <input type="text" class="form-control" id="yetkilitc">
+        <input type="number" class="form-control" id="yetkilitc" name="tc" value="{{selectedStore.tc}}" [(ngModel)]="selectedStore.tc">
       </div>
       <div class="form-group">
         <label for="examplebaslik">Mağaza Adı</label>
-        <input type="text" class="form-control" id="examplebaslik" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="examplebaslik" name="storeName" ria-describedby="emailHelp" value="{{selectedStore.storeName}}" [(ngModel)]="selectedStore.storeName">
       </div>
       <div class="form-group">
         <label for="examplealtbaslik">Mağaza Açıklaması</label>
-        <input type="text" class="form-control" id="examplealtbaslik">
+        <input type="text" class="form-control" id="examplealtbaslik" name="details" value="{{selectedStore.details}}" [(ngModel)]="selectedStore.details">
       </div>
     </div>
     <div class="col-md-5">
       <div class="form-group">
         <label for="adres">Mağaza Adresi</label>
-        <input type="text" class="form-control" id="adres">
+        <input type="text" class="form-control" id="adres" name="address" value="{{selectedStore.address}}" [(ngModel)]="selectedStore.address">
       </div>
       <div class="form-group">
         <label for="email">Mağaza email</label>
-        <input type="text" class="form-control" id="email">
+        <input type="text" class="form-control" id="email" name="email" value="{{selectedStore.email}}" [(ngModel)]="selectedStore.email">
       </div>
       <div class="form-group">
         <label for="telefon">Mağaza Telefon No</label>
-        <input type="text" class="form-control" id="telefon" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="telefon" aria-describedby="emailHelp" name="phone" value="{{selectedStore.phone}}" [(ngModel)]="selectedStore.phone">
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="creditCard" [checked]="selectedStore.creditCard"  [(ngModel)]="selectedStore.creditCard">
         <label class="form-check-label" for="exampleCheck1">Kredi kartı ile taksitli</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck2">
+        <input type="checkbox" class="form-check-input" id="exampleCheck2" name="eft" [checked]="selectedStore.eft"  [(ngModel)]="selectedStore.eft">
         <label class="form-check-label" for="exampleCheck2">Havale & EFT</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck3">
+        <input type="checkbox" class="form-check-input" id="exampleCheck3" name="payAtTheDoor" [checked]="selectedStore.payAtTheDoor"  [(ngModel)]="selectedStore.payAtTheDoor">
         <label class="form-check-label" for="exampleCheck3">Kapıda Ödeme</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+        <input class="form-check-input" type="radio" name="state" id="exampleRadios1" [checked]="selectedStore.state" value=true [(ngModel)]="selectedStore.state">
         <label class="form-check-label" for="exampleRadios1">
           Mağaza Aktif
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <input class="form-check-input" type="radio" name="state" id="exampleRadios2" [checked]="selectedStore.state" value=false [(ngModel)]="selectedStore.state">
         <label class="form-check-label" for="exampleRadios2">
           Mağaza Pasif
         </label>
       </div>
     </div>
     <div class="form-group">
+      <img class="logo" src="{{apiUrl}}/{{selectedStore.photo}}" alt="">
       <label for="exampleFormControlFile1">Firma logosu Ekle</label>
       <input type="file" class="form-control-file" id="exampleFormControlFile1">
     </div>
   </div>
   <div class="row">
-    <button type="submit" class="btn btn-success">Kaydet</button>
+    <button type="submit" class="btn btn-success" (click)="update(selectedStore)">Kaydet</button>
   </div>
 </form>
 <div class="row" style="margin-top: 3%;">
@@ -83,14 +84,14 @@
   <div class="col-md-10">
     <!-- ngFor duyuru döngüsü burada olacak -->
     <div>
-      <div class="input-group">
+      <div class="input-group" *ngFor="let store of stores; let i = index">
         <div type="text" class="form-control" placeholder="mağaza adı" aria-label="mağaza adı"
-          aria-describedby="button-addon4"></div>
+          aria-describedby="button-addon4">{{store.storeName}}</div>
         <div class="input-group-append" id="button-addon4">
-          <button class="btn btn-warning" type="button">Güncelle</button>
+          <button class="btn btn-warning" type="button" (click)="selectedStore = store">Güncelle</button>
           <!-- Güncelle Mağaza sayfasına yönlendirir, isme göre yeni sayfa oluşturmalıyız,
                     ya da hidden metodu ile yorumları açacağız  -->
-          <button class="btn btn-danger" type="button">Sil</button>
+          <button class="btn btn-danger" type="button" (click)="removeStore(store._id, i)">Sil</button>
         </div>
       </div>
     </div>

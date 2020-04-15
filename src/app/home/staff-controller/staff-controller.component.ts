@@ -55,7 +55,13 @@ export class StaffControllerComponent implements OnInit {
     (await this.adminService.update(admin)).subscribe(e => {
       console.log(e)
     })
+  }
 
+  remove(id: string, i: number) {
+    this.adminService.remove(id).subscribe(e => {
+      console.log(e);
+      this.admins.splice(i, 1);
+    });
   }
 
 

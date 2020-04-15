@@ -11,9 +11,9 @@
   <div class="col-md-10">
     <!-- ngFor duyuru döngüsü burada olacak -->
     <div>
-      <div class="input-group">
-        <div type="text" class="form-control" placeholder="mağaza adı" aria-label="mağaza adı"
-          aria-describedby="button-addon4"></div>
+      <div class="input-group" *ngFor="let user of users">
+        <div type="text" class="form-control" (click) ="selectedUser = user"
+          aria-describedby="button-addon4">{{user.firstName}} {{user.lastName}}</div>
         <div class="input-group-append" id="button-addon4">
           <!-- <button class="btn btn-warning" type="button">Güncelle</button> -->
           <!-- Güncelle Mağaza sayfasına yönlendirir, isme göre yeni sayfa oluşturmalıyız,

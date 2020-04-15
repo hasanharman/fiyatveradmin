@@ -10,6 +10,7 @@ export class UserControllerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

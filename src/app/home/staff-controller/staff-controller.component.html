@@ -43,13 +43,13 @@
       <div class="row">
         <div class="col-md-10">
           <!-- ngFor duyuru döngüsü burada olacak -->
-          <div *ngFor='let data of admins'>
+          <div *ngFor='let data of admins; let i = index'>
             <div class="input-group">
               <div class="form-control">{{data.firstName}} {{data.lastName}}</div>
               <div class="input-group-append" id="button-addon4">
                 <button class="btn btn-info" type="button">Yetkisi</button>
                 <button class="btn btn-warning" type="button" (click)="adminSelect(data)">Güncelle</button>
-                <button class="btn btn-danger" type="button">Sil</button>
+                <button class="btn btn-danger" type="button" (click)="remove(data._id, i)">Sil</button>
               </div>
             </div>
           </div>
