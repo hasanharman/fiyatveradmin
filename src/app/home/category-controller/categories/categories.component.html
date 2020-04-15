@@ -1,36 +1,75 @@
 <div class="row">
-    <h1>Kategori Yönetimi</h1>
-  </div>
-  <div class="row" style="margin-top: 3%;">
-    <h5>Yeni Kategori Ekle</h5>
-  </div>
-  <div class="row">
-    <div class="col-md-10">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="yeni kategori"
-          aria-label="yeni kategori" aria-describedby="button-addon4">
-        <div class="input-group-append" id="button-addon4">
-          <button class="btn btn-success" type="button">Ekle</button>
-        </div>
+  <h1>Kategori Yönetimi</h1>
+</div>
+<div class="row" style="margin-top: 3%;">
+  <h5>Yeni Kategori Ekle</h5>
+</div>
+<div class="row">
+  <!-- Ana Kategori -->
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="mainCategory">Ana Kategori gir</label>
+      <input type="text" class="form-control" id="mainCategory" aria-describedby="mainCategory">
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Ekli Ana Kategoriler
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item">Action</a>
+        <a class="dropdown-item">Another action</a>
+        <a class="dropdown-item">Something else here</a>
       </div>
     </div>
   </div>
+  <!-- Sub Kategori -->
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="subCategory">Sub Kategori gir</label>
+      <input type="text" class="form-control" id="subCategory" aria-describedby="subCategory">
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Ekli Sub Kategoriler
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item">Action</a>
+        <a class="dropdown-item">Another action</a>
+        <a class="dropdown-item">Something else here</a>
+      </div>
+    </div>
+  </div>
+  <!-- Micro Kategori -->
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="microCategory">Micro Kategori gir</label>
+      <input type="text" class="form-control" id="microCategory" aria-describedby="microCategory">
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Ekli Micro Kategoriler
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item">Action</a>
+        <a class="dropdown-item">Another action</a>
+        <a class="dropdown-item">Something else here</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="row">
+      <button type="button" class="btn btn-warning" style="margin-top: 6%;">Kaydet</button>
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-success" style="margin-top: 3%;">Kategori Oluştur</button>
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-danger" style="margin-top: 3%;">Sil</button>
+    </div>
+    
+  </div>
+</div>
 
-  <div class="row" style="margin-top: 3%;">
-    <h5>Aktif Kategoriler</h5>
-  </div>
-  <div class="row">
-    <div class="col-md-10">
-      <!-- ngFor duyuru döngüsü burada olacak -->
-      <div>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="var olan kategoriler"
-            aria-label="var olan kategoriler" aria-describedby="button-addon4">
-          <div class="input-group-append" id="button-addon4">
-            <button class="btn btn-warning" type="button">Güncelle</button>
-            <button class="btn btn-danger" type="button">Sil</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>

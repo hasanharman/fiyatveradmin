@@ -1,0 +1,11 @@
+p {
+    margin: 1%;
+    font-size: large;
+}
+.rowClass{
+    margin-top: 1%;
+}
+.selectInput{
+   margin: 0%;
+   display: inline-block;
+}
