@@ -2,74 +2,41 @@
   <h1>Kategori Yönetimi</h1>
 </div>
 <div class="row" style="margin-top: 3%;">
-  <h5>Yeni Kategori Ekle</h5>
+  <h5>Kategoriler</h5>
 </div>
 <div class="row">
-  <!-- Ana Kategori -->
-  <div class="col-md-3">
-    <div class="form-group">
-      <label for="mainCategory">Ana Kategori gir</label>
-      <input type="text" class="form-control" id="mainCategory" aria-describedby="mainCategory">
-    </div>
-    <div class="btn-group">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Ekli Ana Kategoriler
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item">Action</a>
-        <a class="dropdown-item">Another action</a>
-        <a class="dropdown-item">Something else here</a>
+  <div class="col-md-4">
+    <button class="btn btn-outline-success" (click)="newCategory()">Yeni Kategori Ekle</button>
+    <div class="input-group" *ngFor="let category of categories; let i = index">
+      <input type="text" class="form-control" (click)="topIndex = i; subIndex = undefined" (input)="categories[i].category.name = $event.target.value" value="{{categories[i].category.name}}" [ngModel]="categories[i].category.name">
+      <div class="input-group-append" id="button-addon4">
+        <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id === undefined" (click)="addCategory()">Kaydet</button>
+        <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id !== undefined" (click)="updateCategory(category._id)">Güncelle</button>
+        <button class="btn btn-danger" type="button" (click)="removeCategory(i)">Sil</button>
       </div>
     </div>
   </div>
-  <!-- Sub Kategori -->
-  <div class="col-md-3">
-    <div class="form-group">
-      <label for="subCategory">Sub Kategori gir</label>
-      <input type="text" class="form-control" id="subCategory" aria-describedby="subCategory">
-    </div>
-    <div class="btn-group">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Ekli Sub Kategoriler
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item">Action</a>
-        <a class="dropdown-item">Another action</a>
-        <a class="dropdown-item">Something else here</a>
+  <div class="col-md-4" *ngIf="topIndex !== undefined">
+    <button class="btn btn-outline-success" (click)="newSubCategory(topIndex)">Yeni Alt Kategori Ekle</button>
+    <div class="input-group" *ngFor="let sub of categories[topIndex].category.subCategory; let i = index">
+      <input type="text" class="form-control" (click)="subIndex = i" value="{{sub.name}}" (input)="categories[topIndex].category.subCategory[i].name = $event.target.value" ngModel="{{categories[topIndex].category.subCategory[i].name}}">
+      <div class="input-group-append" id="button-addon4">
+        <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id === undefined" (click)="addSubCategory()">Kaydet</button>
+        <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id !== undefined" (click)="updateSubCategory(categories[topIndex]._id, sub._id)">Güncelle</button>
+        <button class="btn btn-danger" type="button" (click)="removeSubCategory(i)">Sil</button>
       </div>
     </div>
   </div>
-  <!-- Micro Kategori -->
-  <div class="col-md-3">
-    <div class="form-group">
-      <label for="microCategory">Micro Kategori gir</label>
-      <input type="text" class="form-control" id="microCategory" aria-describedby="microCategory">
-    </div>
-    <div class="btn-group">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Ekli Micro Kategoriler
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item">Action</a>
-        <a class="dropdown-item">Another action</a>
-        <a class="dropdown-item">Something else here</a>
+  <div class="col-md-4" *ngIf="subIndex !== undefined">
+    <button class="btn btn-outline-success" (click)="newMicroCategory(topIndex, subIndex)">Yeni Mikro Kategori Ekle</button>
+    <div class="input-group" *ngFor="let micro of categories[topIndex].category.subCategory[subIndex].microCategory; let i = index">
+      <input type="text" class="form-control" (click)="microIndex = i" value="{{micro.name}}" (input)="categories[topIndex].category.subCategory[subIndex].microCategory[i].name = $event.target.value" ngModel="{{categories[topIndex].category.subCategory[subIndex].microCategory[i].name}}">
+      <div class="input-group-append" id="button-addon4">
+        <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id === undefined" (click)="addMicroCategory()">Kaydet</button>
+        <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id !== undefined" (click)="updateMicroCategory(categories[topIndex]._id, categories[topIndex].category.subCategory[subIndex]._id, micro._id)">Güncelle</button>
+        <button class="btn btn-danger" type="button" (click)="removeMicroCategory(i)">Sil</button>
       </div>
     </div>
-  </div>
-  <div class="col-md-3">
-    <div class="row">
-      <button type="button" class="btn btn-warning" style="margin-top: 6%;">Kaydet</button>
-    </div>
-    <div class="row">
-      <button type="button" class="btn btn-success" style="margin-top: 3%;">Kategori Oluştur</button>
-    </div>
-    <div class="row">
-      <button type="button" class="btn btn-danger" style="margin-top: 3%;">Sil</button>
-    </div>
-    
   </div>
 </div>
 

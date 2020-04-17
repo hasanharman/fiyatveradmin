@@ -1,5 +1,6 @@
 import { Admin } from './../models/admin';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 declare var $: any;
 
 @Component({
@@ -9,7 +10,7 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   public admin: Admin
-  constructor() {
+  constructor(private authService: AuthService) {
     try {
       this.admin = JSON.parse(localStorage.getItem('currentUser')).admin;
       console.log(this.admin)
@@ -25,6 +26,10 @@ export class HomeComponent implements OnInit {
       $("#page-content-wrapper").toggleClass("toggled");
     });
     
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
 

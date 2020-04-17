@@ -11,7 +11,8 @@ export class ShopsComponent implements OnInit {
   stores = [];
   selectedStore: Store = new Store();
   apiUrl = environment.apiUrl;
-  constructor(private storeService: StoreService) { }
+  constructor(private storeService: StoreService) {
+  }
 
   ngOnInit() {
     this.storeService.stores().subscribe(e => {

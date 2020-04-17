@@ -47,12 +47,13 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuardService as AuthGuard} from './guards/auth-guard.service';
 declare var $: any;
 
 
 const appRoutes: Routes = [
   {
-    path: 'home', component: HomeComponent, children: [
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard],children: [
       { path: 'homepage', component: HomePageComponent },
       {
         path: 'contentcontroller', component: ContentControllerComponent, children: [
@@ -119,7 +120,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home/homepage',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   // { path: '**', component: PageNotFoundComponent }

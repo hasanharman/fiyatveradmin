@@ -61,5 +61,6 @@ async logout() {
   // remove user from local storage to log user out
   await localStorage.removeItem('currentUser');
   this.currentUserSubject.next(null);
+  window.location.reload();
 }
 }
