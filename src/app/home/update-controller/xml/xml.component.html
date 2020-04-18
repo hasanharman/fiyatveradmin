@@ -1,5 +1,7 @@
 <div class="row">
   <h1>XML Yönetimi</h1>
+  <p><a href="{{link}}" target="_blank">Parametreleri İncele</a></p>
+  <ngx-json-view [data]="data"></ngx-json-view>
 </div>
 <div class="row rowClass">
   <div class="btn-group">
@@ -24,37 +26,382 @@
   </div>
 </div>
 <div class="row rowClass">
-  <div class="col-md-4">
+  <div class="dataType">
     <h5>Veri Tabanı</h5>
     <p>Ana Kategori:</p>
   </div>
-  <div class="col-md-4">
+  <div class="dataType">
     <h5>Veri Besleme</h5>
     <!-- NgFor Döncek -->
     <div class="selectiveMenu">
-      <div class="btn-group">
-        <button class="btn btn-outline-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Seç
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item">Action</a>
-          <a class="dropdown-item">Another action</a>
-          <a class="dropdown-item">Something else here</a>
-          <div class="row selectInput">
-            <div class="input-group">
-              <input type="text" class="form-control">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Ekle</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <input type="text" class="form-control">
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="dataType">
     <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Alt Kategori:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>MikroKategori:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Ürün Adı:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Ürün Detay:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Ürün Resim:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Marka:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Ürün Kodu:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>EAN/UPC Kodu:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Mağaza Fiyatı:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Price Inc VAT:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Mağaza Yorum:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Kargo:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Ürün Alışveriş Linki:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Mağaza Kullanılabilirliği:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Merchant ID:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Merchant Name:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Merchant Logo Url:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
+  </div>
+</div>
+<div class="row rowClass">
+  <div class="dataType">
+    <h5>Veri Tabanı</h5>
+    <p>Merchant Site URL:</p>
+  </div>
+  <div class="dataType">
+    <h5>Veri Besleme</h5>
+    <!-- NgFor Döncek -->
+    <div class="selectiveMenu">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="dataType">
+    <h5>Örnek</h5>
+  </div>
+  <div class="dataType">
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <button class="btn btn-outline-warning">Önizleme</button>
   </div>
 </div>

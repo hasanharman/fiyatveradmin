@@ -22,4 +22,8 @@ export class StoreService {
   public remove(id: String): Observable<object> {
     return this.http.post<Store>(`${environment.apiUrl}/store/delete`, {"_id": id});
   }
+
+  public xml(url: string): Observable<object> {
+    return this.http.post(`${environment.apiUrl}/xml`, {"url": url});
+  }
 }

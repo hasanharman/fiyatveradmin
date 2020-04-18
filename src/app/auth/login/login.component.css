@@ -57,3 +57,12 @@ body {
     background-color: #009966;
     border: none
 }
+.signup {
+  border-color: #009966;
+  color: #009966;
+}
+
+.signup:hover {
+  background-color: #009966;
+  color: white;
+}

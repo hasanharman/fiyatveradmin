@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
       email: '',
       password: ''
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/lists';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home/homepage';
     console.log(this.returnUrl)
   }
 

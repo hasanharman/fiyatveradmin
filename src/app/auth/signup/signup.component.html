@@ -1,11 +1,13 @@
 <!-- <button class='backbtn btn btn-outline-info' (click)='back()'>LİSTEYE DÖN</button> -->
-<div class='signBody'>
-    <form class='form form-group' [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+<body class='text-center'>
+    <form class='form-signin form-group' [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+      <img class="mb-4" src="/assets/homepage/logo.png" alt="" width="200">
+      <h1 class="h3 mb-3 font-weight-normal">Fiyatvar.com Admin Paneli Kayıt</h1>
       <input id='firstName' class='formG form-control' type='text' formControlName='firstName' placeholder="Enter your name">
       <input id='lastName' class='formG form-control' type='text' formControlName='lastName' placeholder="Enter your surname">
       <input id='phone' class='formG form-control' type='text' formControlName='phone' placeholder="Enter your phone">
       <input id='email' class='formG form-control' type='text' formControlName='email' placeholder="Enter email">
       <input id='password' class='formG form-control' type='password' formControlName='password' placeholder="Password">
-      <button class='btn btn-success formG' type='submit'>SIGN UP</button>
+      <button class="btn btn-primary btn-block signin" type="submit">Kayıt Ol</button>
     </form>
-  </div>
+  </body>

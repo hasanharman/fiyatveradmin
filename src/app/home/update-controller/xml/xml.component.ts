@@ -1,4 +1,6 @@
+import { StoreService } from './../../../services/store.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-xml',
@@ -6,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./xml.component.css']
 })
 export class XmlComponent implements OnInit {
-
-  constructor() { }
+  link: string;
+  data;
+  constructor(private router: Router, private route: ActivatedRoute, private storeService: StoreService) {
+    this.route.params.subscribe(e => {
+      this.link = e.link;
+      this.storeService.xml(this.link).subscribe(e => {
+        this.data = e;
+      })
+    });
+  }
 
   ngOnInit() {
   }

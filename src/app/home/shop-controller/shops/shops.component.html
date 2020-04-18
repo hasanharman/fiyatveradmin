@@ -88,6 +88,7 @@
         <div type="text" class="form-control" placeholder="mağaza adı" aria-label="mağaza adı"
           aria-describedby="button-addon4">{{store.storeName}}</div>
         <div class="input-group-append" id="button-addon4">
+          <button *ngIf="store.xml !== undefined" class="btn" [ngClass]="{'btn-outline-success': store.xml.state, 'btn-success': !store.xml.state}" type="button" [routerLink]="['/home/updatecontroller/xml/', store.xml.link]">XML Kontrol</button>
           <button class="btn btn-warning" type="button" (click)="selectedStore = store">Güncelle</button>
           <!-- Güncelle Mağaza sayfasına yönlendirir, isme göre yeni sayfa oluşturmalıyız,
                     ya da hidden metodu ile yorumları açacağız  -->

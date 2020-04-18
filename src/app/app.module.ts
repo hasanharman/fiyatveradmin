@@ -28,8 +28,8 @@ import { BannerComponent } from './home/content-controller/banner/banner.compone
 import { CategoriesComponent } from './home/category-controller/categories/categories.component';
 import { ProductsComponent } from './home/category-controller/products/products.component';
 import { ShopsComponent } from './home/shop-controller/shops/shops.component';
-// import { PaymentmethodsComponent } from './home/shop-controller/paymentmethods/paymentmethods.component';
-// import { ShipmentmethodsComponent } from './home/shop-controller/shipmentmethods/shipmentmethods.component';
+import { PaymentmethodsComponent } from './home/shop-controller/paymentmethods/paymentmethods.component';
+import { ShipmentmethodsComponent } from './home/shop-controller/shipmentmethods/shipmentmethods.component';
 import { ShopsupportComponent } from './home/shop-controller/shopsupport/shopsupport.component';
 import { UsersComponent } from './home/user-controller/users/users.component';
 import { PointSystemComponent } from './home/user-controller/point-system/point-system.component';
@@ -48,6 +48,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService as AuthGuard} from './guards/auth-guard.service';
+import { ShopAddsComponent } from './home/accounting-controller/shop-adds/shop-adds.component';
+import { NgxJsonViewModule } from 'ng-json-view';
 declare var $: any;
 
 
@@ -76,8 +78,8 @@ const appRoutes: Routes = [
       {
         path: 'shopcontroller', component: ShopControllerComponent, children: [
           { path: 'shops', component: ShopsComponent },
-          // { path: 'payment', component: PaymentmethodsComponent },
-          // { path: 'shipment', component: ShipmentmethodsComponent },
+          { path: 'payment', component: PaymentmethodsComponent },
+          { path: 'shipment', component: ShipmentmethodsComponent },
           { path: 'support', component: ShopsupportComponent }
         ]
       },
@@ -93,7 +95,7 @@ const appRoutes: Routes = [
       {
         path: 'updatecontroller', component: UpdateControllerComponent, children: [
           { path: 'cronjob', component: CronjobComponent },
-          { path: 'xml', component: XmlComponent }
+          { path: 'xml/:link', component: XmlComponent }
         ]
       },
       {
@@ -107,7 +109,7 @@ const appRoutes: Routes = [
         path: 'accountingcontroller', component: AccountingControllerComponent, children: [
           { path: 'credits', component: CreditsComponent },
           { path: 'livesupport', component: LivesupportComponent },
-          { path: 'adds', component: AddsComponent }
+          { path: 'adds', component: ShopAddsComponent }
         ]
       },
     ]
@@ -115,9 +117,9 @@ const appRoutes: Routes = [
   {
     path: 'login', component: LoginComponent
   },
-  {
-    path: 'signup', component: SignupComponent 
-  },
+  // {
+  //   path: 'signup', component: SignupComponent 
+  // },
   {
     path: '',
     redirectTo: 'login',
@@ -152,8 +154,8 @@ const appRoutes: Routes = [
     CategoriesComponent,
     ProductsComponent,
     ShopsComponent,
-    // PaymentmethodsComponent,
-    // ShipmentmethodsComponent,
+    PaymentmethodsComponent,
+    ShipmentmethodsComponent,
     ShopsupportComponent,
     UsersComponent,
     PointSystemComponent,
@@ -167,6 +169,7 @@ const appRoutes: Routes = [
     LivesupportComponent,
     HomePageComponent,
     AgreementComponent,
+    ShopAddsComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -178,7 +181,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxJsonViewModule
   ],
   providers: [
     {

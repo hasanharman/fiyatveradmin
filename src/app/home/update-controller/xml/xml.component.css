@@ -9,3 +9,11 @@ p {
    margin: 0%;
    display: inline-block;
 }
+.dataType {
+    padding: 10px;
+    min-width: 220px;
+    margin-right: 10px;
+}
+.btn:hover {
+    color: white;
+}
