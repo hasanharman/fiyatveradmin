@@ -49,7 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService as AuthGuard} from './guards/auth-guard.service';
 import { ShopAddsComponent } from './home/accounting-controller/shop-adds/shop-adds.component';
-import { NgxJsonViewModule } from 'ng-json-view';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 declare var $: any;
 
 
@@ -182,7 +182,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgxJsonViewModule
+    NgxJsonViewerModule
   ],
   providers: [
     {

@@ -1,7 +1,7 @@
-<div class="row">
+<div class="col">
   <h1>XML Yönetimi</h1>
-  <p><a href="{{link}}" target="_blank">Parametreleri İncele</a></p>
-  <ngx-json-view [data]="data"></ngx-json-view>
+  <img *ngIf="data === undefined" src="../../../../assets/loader.svg"/>
+  <ngx-json-viewer *ngIf="data !== undefined" [json]="data" [expanded]="false"></ngx-json-viewer>
 </div>
 <div class="row rowClass">
   <div class="btn-group">
