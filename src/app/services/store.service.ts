@@ -26,4 +26,20 @@ export class StoreService {
   public xml(url: string): Observable<object> {
     return this.http.post(`${environment.apiUrl}/parse/xml`, {"url": url});
   }
+
+  public xmlFormats(): Observable<object> {
+    return this.http.get(`${environment.apiUrl}/xml/formats`);
+  }
+
+  public xmlFormatAdd(format): Observable<object> {
+    return this.http.post(`${environment.apiUrl}/xml/format/add`, format);
+  }
+
+  public xmlFormatUpdate(format): Observable<object> {
+    return this.http.post(`${environment.apiUrl}/xml/format/update`, format);
+  }
+
+  public xmlFormatDelete(format): Observable<object> {
+    return this.http.post(`${environment.apiUrl}/xml/format/delete`, format);
+  }
 }

@@ -1,3 +1,13 @@
+<div class="addFormat form-group col">
+  <h4 class="row" *ngIf="!updateState">Yeni XML Formatı Keşfedildi!</h4>
+  <h4 class="row" *ngIf="updateState">XML Formatında Değişiklik Keşfedildi!</h4>
+  <input class="form-control row" type="text" [value]="selectedName" (input)="selectedName = $event.target.value">
+  <button class="form-control btn btn-success row" *ngIf="!updateState" (click)="addFormat(true)">Kaydet</button>
+  <button class="form-control btn btn-success row" *ngIf="updateState" (click)="addFormat(true)">Yeni Format Olarak Kaydet</button>
+  <button class="form-control btn btn-warning row" *ngIf="updateState" (click)="addFormat(true)">Formatı Güncelle</button>
+  <button class="form-control btn btn-danger row" (click)="addFormat(false)">İptal</button>
+</div>
+<div class="alert alert-success alert">{{count}} Yeni Ürün Eklendi</div>
 <div class="col">
   <h1>XML Yönetimi</h1>
   <img *ngIf="data === undefined" src="../../../../assets/loader.svg"/>
@@ -11,10 +21,11 @@
       aria-expanded="false">
       XML formatı seç
     </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item">Action</a>
-      <a class="dropdown-item">Another action</a>
-      <a class="dropdown-item">Something else here</a>
+    <div class="dropdown-menu" *ngIf="formats !== undefined">
+      <div class="dropdown-item" *ngFor="let format of formats; let i = index">
+        <button class="btn btn-outline-success"(click)="selectFormat(format)">{{format.name}}</button>
+        <button class="btn btn-outline-danger" style="margin-left: 10px;" (click)="removeFormat(format._id, i)">SİL</button>
+      </div>
     </div>
   </div>
 </div>
@@ -27,7 +38,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="example !== undefined ">
+<div *ngIf="example !== undefined">
   <div class="row rowClass">
     <div class="dataType">
       <h5>Veri Tabanı</h5>
@@ -333,5 +344,4 @@
     </div>
   </div> -->
   <button class="btn btn-outline-success" (click)="addProducts()">Ürünleri Ekle</button>
-  <button class="btn btn-outline-info">XML Formatı olarak kaydet</button>
 </div>

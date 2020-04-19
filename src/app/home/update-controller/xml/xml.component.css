@@ -21,3 +21,32 @@ p {
     max-width: 80%;
     overflow: hidden;
 }
+.alert {
+    position: fixed;
+    z-index: 99;
+    width: 300px;
+    margin-left: calc(100vw - 750px);
+    opacity: 0;
+}
+.addFormat {
+    position: fixed;
+    z-index: 99;
+    width: 300px;
+    height: 300px;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    margin-left: calc(50vw - 450px);
+    margin-top: calc(50vh - 310px)
+}
+.dropdown-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
