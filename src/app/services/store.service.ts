@@ -24,6 +24,6 @@ export class StoreService {
   }
 
   public xml(url: string): Observable<object> {
-    return this.http.post(`${environment.apiUrl}/xml`, {"url": url});
+    return this.http.post(`${environment.apiUrl}/parse/xml`, {"url": url});
   }
 }

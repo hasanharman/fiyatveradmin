@@ -17,3 +17,7 @@ p {
 .btn:hover {
     color: white;
 }
+.json {
+    max-width: 80%;
+    overflow: hidden;
+}

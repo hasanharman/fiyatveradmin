@@ -7,13 +7,16 @@ export class Product {
     price: number;
     model: string;
     brand: string;
-    features: Array<any>;
     comments: Array<any>;
-    imageUrls: Array<any>;
-    links: Array<any>;
+    imageUrl: string;
+    link: string;
     cargo: boolean;
     storeId: string;
     available: boolean;
+    details: string;
+    productCode: string;
+    eanUpcCode: string;
+    priceIncVat: string;
     searchCount: {
       count: number;
       words: Array<any>;

@@ -1,7 +1,9 @@
 <div class="col">
   <h1>XML Yönetimi</h1>
   <img *ngIf="data === undefined" src="../../../../assets/loader.svg"/>
-  <ngx-json-viewer *ngIf="data !== undefined" [json]="data" [expanded]="false"></ngx-json-viewer>
+  <div class="json">
+    <ngx-json-viewer *ngIf="data !== undefined" [json]="data" [expanded]="false"></ngx-json-viewer>
+  </div>
 </div>
 <div class="row rowClass">
   <div class="btn-group">
@@ -18,390 +20,318 @@
 </div>
 <div class="row rowClass" style="width: 50%;">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Path giriniz... products/products" aria-label="Path giriniz... products/products"
+    <input type="text" class="form-control" placeholder="Path giriniz... products/products" (value)="path" (input)="path = $event.target.value" [(ngModel)]="path" aria-label="Path giriniz... products/products"
       aria-describedby="button-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Onayla</button>
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="acception()">Onayla</button>
     </div>
   </div>
 </div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Ana Kategori:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+<div *ngIf="example !== undefined ">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Ana Kategori:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.category">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.category !== undefined">{{example[0][product.category]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Alt Kategori:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Alt Kategori:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.subCategory">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf=" product.subCategory !== undefined">{{example[0][product.subCategory]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>MikroKategori:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>MikroKategori:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.microCategory">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.microCategory !== undefined">{{example[0][product.microCategory]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Ürün Adı:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Ürün Adı:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.name">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.name !== undefined">{{example[0][product.name]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Ürün Detay:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Ürün Detay:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.details">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.details !== undefined">{{example[0][product.details]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Ürün Resim:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Ürün Resim:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.imageUrl">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.imageUrl !== undefined">{{example[0][product.imageUrl]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Marka:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Marka:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.brand">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.brand !== undefined">{{example[0][product.brand]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Ürün Kodu:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Ürün Kodu:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.productCode">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.productCode !== undefined">{{example[0][product.productCode]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>EAN/UPC Kodu:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>EAN/UPC Kodu:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.eanUpcCode">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.eanUpcCode !== undefined">{{example[0][product.eanUpcCode]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Mağaza Fiyatı:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Mağaza Fiyatı:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.price">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.price !== undefined">{{example[0][product.price]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Price Inc VAT:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Price Inc VAT:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.priceIncVat">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.priceIncVat !== undefined">{{example[0][product.priceIncVat]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Mağaza Yorum:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <!-- <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Mağaza Yorum:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.category">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="example !== undefined && product.category !== undefined">{{example[product.category]}}</div>
+    </div>
+  </div> -->
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Kargo:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.cargo">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.cargo !== undefined">{{example[0][product.cargo]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Kargo:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Ürün Alışveriş Linki:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.link">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.link !== undefined">{{example[0][product.link]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Ürün Alışveriş Linki:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Mağaza Kullanılabilirliği:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.available">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="product.available !== undefined">{{example[0][product.available]}}</div>
     </div>
   </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Mağaza Kullanılabilirliği:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  <!-- <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Merchant ID:</p>
     </div>
-  </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Merchant ID:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.category">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
     </div>
-  </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Merchant Name:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="example !== undefined && product.category !== undefined">{{example[product.category]}}</div>
     </div>
-  </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Merchant Logo Url:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+  </div> -->
+  <!-- <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Merchant Name:</p>
     </div>
-  </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
-</div>
-<div class="row rowClass">
-  <div class="dataType">
-    <h5>Veri Tabanı</h5>
-    <p>Merchant Site URL:</p>
-  </div>
-  <div class="dataType">
-    <h5>Veri Besleme</h5>
-    <!-- NgFor Döncek -->
-    <div class="selectiveMenu">
-      <input type="text" class="form-control">
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.category">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
     </div>
-  </div>
-  <div class="dataType">
-    <h5>Örnek</h5>
-  </div>
-  <div class="dataType">
-    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-    <button class="btn btn-outline-warning">Önizleme</button>
-  </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="example !== undefined && product.category !== undefined">{{example[product.category]}}</div>
+    </div>
+  </div> -->
+  <!-- <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Merchant Logo Url:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.category">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="example !== undefined && product.category !== undefined">{{example[product.category]}}</div>
+    </div>
+  </div> -->
+  <!-- <div class="row rowClass">
+    <div class="dataType">
+      <h5>Veri Tabanı</h5>
+      <p>Merchant Site URL:</p>
+    </div>
+    <div class="dataType">
+      <h5>Veri Besleme</h5>
+      <select class="form-control" [(ngModel)]="product.category">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="dataType">
+      <h5>Örnek</h5>
+      <div *ngIf="example !== undefined && product.category !== undefined">{{example[product.category]}}</div>
+    </div>
+  </div> -->
+  <button class="btn btn-outline-success" (click)="addProducts()">Ürünleri Ekle</button>
+  <button class="btn btn-outline-info">XML Formatı olarak kaydet</button>
 </div>
