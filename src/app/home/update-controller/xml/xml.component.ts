@@ -1,3 +1,4 @@
+import { Format } from './../../../models/format';
 import { ProductService } from 'src/app/services/product.service';
 import { StoreService } from './../../../services/store.service';
 import { Component, OnInit, IterableDiffer, IterableDiffers } from '@angular/core';
@@ -21,8 +22,8 @@ export class XmlComponent implements OnInit {
   path;
   example;
   types;
-  product: Product = new Product();
-  count = 1;
+  product: Format = new Format();
+  count = 0;
   formats;
   updateState = false;
   selectedName = "";
@@ -92,12 +93,15 @@ export class XmlComponent implements OnInit {
       const newProduct: Product = new Product();
       Object.keys(this.product).forEach(e => {
         try {
-          newProduct[e] = element[this.product[e]][0];
+          if (e !== "none") {
+            newProduct[e] = element[this.product[e]][0];
+          }
         } catch (error) {}
         newProduct.storeId = this.id;
       })
+      TweenMax.set(document.getElementsByClassName("alert"), {css: {"opacity": 1, "margin-top": "calc(100vh - 300px)"}});
       this.productService.addProduct(newProduct).subscribe(e => {
-        TweenMax.fromTo(document.getElementsByClassName("alert"), 1.3, {css: {"opacity": 1, "margin-top": "calc(100vh - 300px)"}}, {css: {"opacity": 0, "margin-top": "calc(100vh - 500px)"}});
+        TweenMax.set(document.getElementsByClassName("alert"), {css: {"opacity": 1, "margin-top": "calc(100vh - 300px)"}});
         this.count++;
       });
     });
@@ -107,6 +111,8 @@ export class XmlComponent implements OnInit {
       } else {
         if (this.updateState) {
           $(".addFormat").css({"display": "flex"})
+        } else {
+          this.router.navigate(["/home/shopcontroller/shops"]);
         }
       }
     });
@@ -134,6 +140,7 @@ export class XmlComponent implements OnInit {
       }
     } else {
       $(".addFormat").css({"display": "none"})
+      this.router.navigate(["/home/shopcontroller/shops"]);
     }
   }
 

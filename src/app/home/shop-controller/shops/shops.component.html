@@ -7,6 +7,9 @@
 <form>
   <div class="row">
     <div class="col-md-5">
+      <div class="form-group" *ngIf="selectedStore._id">
+        <img class="logo" src="{{apiUrl}}/{{selectedStore.photo}}" alt="">
+      </div>
       <div class="form-group">
         <label for="yetkili">Yetkili Adı</label>
         <input type="text" class="form-control" id="yetkili" name="firstName" value="{{selectedStore.firstName}}" [(ngModel)]="selectedStore.firstName">
@@ -66,14 +69,15 @@
         </label>
       </div>
     </div>
-    <div class="form-group">
-      <img class="logo" src="{{apiUrl}}/{{selectedStore.photo}}" alt="">
-      <label for="exampleFormControlFile1">Firma logosu Ekle</label>
-      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    <div class="col-md-5" *ngIf="selectedStore._id">
+      <label for="photo" style="display: block" class="btn btn-outline-info">Firma logosunu Güncelle</label>
+      <input style="display: none" type=file name='photo' id='photo' (change)='upload()' ng2FileSelect [uploader]='storeService.uploader'>
     </div>
   </div>
   <div class="row">
-    <button type="submit" class="btn btn-success" (click)="update(selectedStore)">Kaydet</button>
+    <div class="col-md-5">
+      <button type="submit" class="btn btn-success form-group col" (click)="update(selectedStore)">Kaydet</button>
+    </div>
   </div>
 </form>
 <div class="row" style="margin-top: 3%;">
@@ -88,6 +92,7 @@
         <div type="text" class="form-control" placeholder="mağaza adı" aria-label="mağaza adı"
           aria-describedby="button-addon4">{{store.storeName}}</div>
         <div class="input-group-append" id="button-addon4">
+          <button *ngIf="store.products.length >= 0" class="btn btn-success" type="button" [routerLink]="['/home/updatecontroller/xml/', store.xml.link, store._id]">Ürün Kontrol</button>
           <button *ngIf="store.xml !== undefined" class="btn" [ngClass]="{'btn-outline-success': store.xml.state, 'btn-success': !store.xml.state}" type="button" [routerLink]="['/home/updatecontroller/xml/', store.xml.link, store._id]">XML Kontrol</button>
           <button class="btn btn-warning" type="button" (click)="selectedStore = store">Güncelle</button>
           <!-- Güncelle Mağaza sayfasına yönlendirir, isme göre yeni sayfa oluşturmalıyız,

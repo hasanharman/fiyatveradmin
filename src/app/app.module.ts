@@ -50,6 +50,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService as AuthGuard} from './guards/auth-guard.service';
 import { ShopAddsComponent } from './home/accounting-controller/shop-adds/shop-adds.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { FileUploadModule } from '../../node_modules/ng2-file-upload';
 declare var $: any;
 
 
@@ -182,7 +183,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgxJsonViewerModule
+    NgxJsonViewerModule,
+    FileUploadModule
   ],
   providers: [
     {

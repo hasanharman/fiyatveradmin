@@ -3,13 +3,43 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Store } from '../models/store';
+import {  FileUploader } from '../../../node_modules/ng2-file-upload';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
+  uploader: FileUploader;
+  hasBaseDropZoneOver: boolean;
+  hasAnotherDropZoneOver: boolean;
+  response: string;
+  id: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.uploader = new FileUploader({
+      url: `${environment.apiUrl}/store/pp/upload`,
+      itemAlias: 'photo'
+    });
+
+    this.uploader.onAfterAddingAll = (file) => { file.withCredentials = false; };
+    // tslint:disable-next-line: max-line-length
+    this.uploader.onBeforeUploadItem = (item) => {
+      item.withCredentials = false;
+      item.file.name = this.id + '.' + item.file.type.split('/')[1];
+      item.headers.push({"authorization": "this.id"});
+      console.log(item)
+    };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('FileUpload:uploaded:', item, status, response);
+      // location.reload();
+  };
+  
+    this.response = '';
+  
+    this.uploader.response.subscribe( res => {
+      this.response = res;
+    } );
+  }
 
   public stores(): Observable<object> {
     return this.http.get<Store>(`${environment.apiUrl}/stores`)

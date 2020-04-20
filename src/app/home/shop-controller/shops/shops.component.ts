@@ -11,7 +11,7 @@ export class ShopsComponent implements OnInit {
   stores = [];
   selectedStore: Store = new Store();
   apiUrl = environment.apiUrl;
-  constructor(private storeService: StoreService) {
+  constructor(public storeService: StoreService) {
   }
 
   ngOnInit() {
@@ -36,10 +36,14 @@ export class ShopsComponent implements OnInit {
     delete store.tokens;
     delete store.registeredDate;
     delete store.password;
-    console.log(store);
     this.storeService.update(store).subscribe(e => {
       console.log(e);
     })
+  }
+
+  upload() {
+    this.storeService.id = this.selectedStore._id;
+    this.storeService.uploader.uploadAll();
   }
 
 }
