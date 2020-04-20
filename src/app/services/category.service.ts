@@ -38,4 +38,16 @@ export class CategoryService {
   public deleteMicroCategory(microCategory): Observable<object> {
     return this.http.post<Category>(`${environment.apiUrl}/category/subcategory/microcategory/delete`, microCategory);
   }
+
+  public updateCategory(category): Observable<object> {
+    return this.http.post<Category>(`${environment.apiUrl}/category/update`, category);
+  }
+
+  public updateSubCategory(subCategory): Observable<object> {
+    return this.http.post<Category>(`${environment.apiUrl}/category/subcategory/update`, subCategory);
+  }
+
+  public upodateMicroCategory(microCategory): Observable<object> {
+    return this.http.post<Category>(`${environment.apiUrl}/category/subcategory/microcategory/update`, microCategory);
+  }
 }

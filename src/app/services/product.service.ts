@@ -18,4 +18,8 @@ export class ProductService {
   public searches(): Observable<object> {
     return this.http.get<Product>(`${environment.apiUrl}/report/search`);
   }
+
+  public addProduct(product: Product): Observable<object> {
+    return this.http.post<Product>(`${environment.apiUrl}/store/add/product`, product);
+  }
 }

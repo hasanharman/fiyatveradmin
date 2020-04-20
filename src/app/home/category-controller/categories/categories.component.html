@@ -11,7 +11,7 @@
       <input type="text" class="form-control" (click)="topIndex = i; subIndex = undefined" (input)="categories[i].category.name = $event.target.value" value="{{categories[i].category.name}}" [ngModel]="categories[i].category.name">
       <div class="input-group-append" id="button-addon4">
         <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id === undefined" (click)="addCategory()">Kaydet</button>
-        <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id !== undefined" (click)="updateCategory(category._id)">Güncelle</button>
+        <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id !== undefined" (click)="updateCategory(category)">Güncelle</button>
         <button class="btn btn-danger" type="button" (click)="removeCategory(i)">Sil</button>
       </div>
     </div>
@@ -22,7 +22,7 @@
       <input type="text" class="form-control" (click)="subIndex = i" value="{{sub.name}}" (input)="categories[topIndex].category.subCategory[i].name = $event.target.value" ngModel="{{categories[topIndex].category.subCategory[i].name}}">
       <div class="input-group-append" id="button-addon4">
         <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id === undefined" (click)="addSubCategory()">Kaydet</button>
-        <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id !== undefined" (click)="updateSubCategory(categories[topIndex]._id, sub._id)">Güncelle</button>
+        <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id !== undefined" (click)="updateSubCategory(sub)">Güncelle</button>
         <button class="btn btn-danger" type="button" (click)="removeSubCategory(i)">Sil</button>
       </div>
     </div>
@@ -33,7 +33,7 @@
       <input type="text" class="form-control" (click)="microIndex = i" value="{{micro.name}}" (input)="categories[topIndex].category.subCategory[subIndex].microCategory[i].name = $event.target.value" ngModel="{{categories[topIndex].category.subCategory[subIndex].microCategory[i].name}}">
       <div class="input-group-append" id="button-addon4">
         <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id === undefined" (click)="addMicroCategory()">Kaydet</button>
-        <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id !== undefined" (click)="updateMicroCategory(categories[topIndex]._id, categories[topIndex].category.subCategory[subIndex]._id, micro._id)">Güncelle</button>
+        <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id !== undefined" (click)="updateMicroCategory(micro)">Güncelle</button>
         <button class="btn btn-danger" type="button" (click)="removeMicroCategory(i)">Sil</button>
       </div>
     </div>

@@ -120,16 +120,37 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  updateCategory(i) {
-
+  updateCategory(category) {
+    const req = {
+      "categoryId": category._id,
+      "newName": category.category.name
+    };
+    this.categoryService.updateCategory(req).subscribe(e => {
+      this.categories[this.topIndex] = e;
+    })
   }
 
-  updateSubCategory(i, j) {
-
+  updateSubCategory(sub) {
+    const req = {
+      "categoryId": this.categories[this.topIndex]._id,
+      "subCategoryId": sub._id,
+      "newName": sub.name
+    };
+    this.categoryService.updateSubCategory(req).subscribe(e => {
+      this.categories[this.topIndex] = e;
+    });
   }
 
-  updateMicroCategory(i, j, k) {
-
+  updateMicroCategory(micro) {
+    const req = {
+      "categoryId": this.categories[this.topIndex]._id,
+      "subCategoryId": this.categories[this.topIndex].category.subCategory[this.subIndex]._id,
+      "microCategoryId": micro._id,
+      "newName": micro.name
+    };
+    this.categoryService.upodateMicroCategory(req).subscribe(e => {
+      this.categories[this.topIndex] = e;
+    })
   }
 
 
