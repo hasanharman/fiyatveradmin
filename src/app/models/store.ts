@@ -19,8 +19,8 @@ export class Store {
     products?: [];
     tokens?: [];
     xml?: {
-      state?: boolean,
-      link?: string
+      state?: boolean;
+      link?: string;
     };
     details?: string;
     eft?: boolean;

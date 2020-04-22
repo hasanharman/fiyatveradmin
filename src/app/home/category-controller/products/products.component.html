@@ -7,10 +7,10 @@
 <div class="row">
   <div class="col-md-10">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="ürün numarası gir..">
-      <span class="input-group-btn">
+      <input type="text" class="form-control" placeholder="Ürün Ara... (Ürün ismi, ürün id, ürün fiyatı...)" (input)="search($event.target.value)">
+      <!-- <span class="input-group-btn">
         <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i></button>
-      </span>
+      </span> -->
     </div>
   </div>
 </div>
@@ -19,84 +19,54 @@
   <h5>Aktif Ürünler</h5>
 </div>
 <div class="row">
-  <div class="col-md-10">
-    <!-- ngFor duyuru döngüsü burada olacak -->
-    <div class="accordion" id="accordionExample">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne">
-              <div class="row">
-                <div class="c1ol1">Ürün Kodu</div>
-                <div class="c1ol2">Ürün Adı</div>
-                <div class="c1ol3">Mağaza Adı</div>
-              </div>
-            </button>
-          </h5>
+  <div class="input-group col-md-11" role="group" aria-label="product box" *ngFor="let product of products; let i = index">
+    <div type="text" class="form-control col-md-3" aria-label="product id">{{product._id}}</div>
+    <div type="text" class="form-control col-md-7" style="overflow: hidden;" placeholder="product name" aria-label="mağaza adı">{{product.name}}</div>
+    <div class="form-control col-md-2">
+      <input type="checkbox" name="available" id="available" [checked]="product.available" (change)="update(product)" [(ngModel)]="product.available">
+      <label for="available">Aktif/Pasif</label>
+    </div>
+    <div type="text" class="form-control col-md-1" placeholder="product price" aria-label="mağaza adı"
+          aria-describedby="button-addon4">{{product.price}}₺</div>
+    <div class="input-group-append" id="button-addon4">
+      <button type="button" class="btn btn-warning" data-toggle="modal"
+      data-target="#edit-panel" (click)="selectedProduct = product">Güncelle</button>
+      <button type="button" class="btn btn-danger" (click)="remove(product._id, i)">Sil</button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="edit-panel" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ürünü Güncelle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input class="form-control" type="text" [value]="selectedProduct.category" [(ngModel)]="selectedProduct.category"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.subCategory" [(ngModel)]="selectedProduct.subCategory"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.microCategory" [(ngModel)]="selectedProduct.microCategory"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.name" [(ngModel)]="selectedProduct.name"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.price" [(ngModel)]="selectedProduct.price"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.model" [(ngModel)]="selectedProduct.model"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.brand" [(ngModel)]="selectedProduct.brand"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.imageUrl" [(ngModel)]="selectedProduct.imageUrl"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.link" [(ngModel)]="selectedProduct.link"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.cargo" [(ngModel)]="selectedProduct.cargo"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.available" [(ngModel)]="selectedProduct.available"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.details" [(ngModel)]="selectedProduct.details"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.productCode" [(ngModel)]="selectedProduct.productCode"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.eanUpcCode" [(ngModel)]="selectedProduct.eanUpcCode"><br>
+          <input class="form-control" type="text" [value]="selectedProduct.priceIncVat" [(ngModel)]="selectedProduct.priceIncVat"><br>
         </div>
-
-        <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body">
-            <div class="row">
-              <span>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon
-                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
-                3
-                wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
-                vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                nesciunt
-                you probably haven't heard of them accusamus labore sustainable VHS.
-              </span>
-            </div>
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  Aktif ürün
-                </label>
-              </div>
-            </div>
-            <div class="row buttonRow">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-warning" data-toggle="modal"
-                  data-target="#exampleModal">Güncelle</button>
-                <button type="button" class="btn btn-danger">Sil</button>
-
-                <!-- Modal Start -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ürünü Güncelle</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="form-group">
-                          <input class="form-control" type="text" placeholder="Default input"><br>
-                          <input class="form-control" type="text" placeholder="Default input"><br>
-                          <input class="form-control" type="text" placeholder="Default input"><br>
-                          <input class="form-control" type="text" placeholder="Default input">
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-success">Değişiklikleri Kaydet</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(selectedProduct)">Değişiklikleri Kaydet</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
       </div>
     </div>
   </div>

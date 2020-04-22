@@ -1,3 +1,4 @@
+import { ProductService } from 'src/app/services/product.service';
 import { environment } from './../../../../environments/environment';
 import { StoreService } from './../../../services/store.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,8 @@ export class ShopsComponent implements OnInit {
   stores = [];
   selectedStore: Store = new Store();
   apiUrl = environment.apiUrl;
-  constructor(public storeService: StoreService) {
+  constructor(public storeService: StoreService, public productService: ProductService) {
+    this.selectedStore.xml = {"state": undefined, "link": ""}
   }
 
   ngOnInit() {
@@ -37,7 +39,8 @@ export class ShopsComponent implements OnInit {
     delete store.registeredDate;
     delete store.password;
     this.storeService.update(store).subscribe(e => {
-      console.log(e);
+      this.selectedStore = new Store();
+      this.selectedStore.xml = {"state": undefined, "link": ""};
     })
   }
 

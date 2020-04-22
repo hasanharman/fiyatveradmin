@@ -73,7 +73,8 @@ const appRoutes: Routes = [
       {
         path: 'categorycontroller', component: CategoryControllerComponent, children: [
           { path: 'categories', component: CategoriesComponent },
-          { path: 'products', component: ProductsComponent }
+          { path: 'products', component: ProductsComponent },
+          { path: 'products/:id', component: ProductsComponent }
         ]
       },
       {
