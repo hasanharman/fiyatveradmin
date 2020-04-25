@@ -48,70 +48,73 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService as AuthGuard} from './guards/auth-guard.service';
+import { AuthorityGuardService as AuthorityGuard } from './guards/authority-guard.service';
 import { ShopAddsComponent } from './home/accounting-controller/shop-adds/shop-adds.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { FileUploadModule } from '../../node_modules/ng2-file-upload';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 declare var $: any;
 
 
 const appRoutes: Routes = [
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard],children: [
-      { path: 'homepage', component: HomePageComponent },
+      { path: 'homepage', component: HomePageComponent, canActivate: [AuthorityGuard] },
       {
         path: 'contentcontroller', component: ContentControllerComponent, children: [
-          { path: 'pages', component: PagesComponent },
-          { path: 'announcements', component: AnnouncementsComponent },
-          { path: 'slider', component: SliderComponent },
-          { path: 'banner', component: BannerComponent },
-          { path: 'adds', component: AddsComponent },
-          { path: 'promotions', component: PromotionsComponent },
-          { path: 'mails', component: MailsComponent },
-          { path: 'agreement', component: AgreementComponent }
+          { path: 'pages', component: PagesComponent, canActivate: [AuthorityGuard] },
+          { path: 'announcements', component: AnnouncementsComponent, canActivate: [AuthorityGuard] },
+          { path: 'slider', component: SliderComponent, canActivate: [AuthorityGuard] },
+          { path: 'banner', component: BannerComponent, canActivate: [AuthorityGuard] },
+          { path: 'adds', component: AddsComponent, canActivate: [AuthorityGuard] },
+          { path: 'promotions', component: PromotionsComponent, canActivate: [AuthorityGuard] },
+          { path: 'mails', component: MailsComponent, canActivate: [AuthorityGuard] },
+          { path: 'agreement', component: AgreementComponent, canActivate: [AuthorityGuard] }
         ]
       },
       {
         path: 'categorycontroller', component: CategoryControllerComponent, children: [
-          { path: 'categories', component: CategoriesComponent },
-          { path: 'products', component: ProductsComponent },
-          { path: 'products/:id', component: ProductsComponent }
+          { path: 'categories', component: CategoriesComponent, canActivate: [AuthorityGuard] },
+          { path: 'products', component: ProductsComponent, canActivate: [AuthorityGuard] },
+          { path: 'products/:id', component: ProductsComponent, canActivate: [AuthorityGuard] }
         ]
       },
       {
         path: 'shopcontroller', component: ShopControllerComponent, children: [
-          { path: 'shops', component: ShopsComponent },
-          { path: 'payment', component: PaymentmethodsComponent },
-          { path: 'shipment', component: ShipmentmethodsComponent },
-          { path: 'support', component: ShopsupportComponent }
+          { path: 'shops', component: ShopsComponent, canActivate: [AuthorityGuard] },
+          { path: 'payment', component: PaymentmethodsComponent, canActivate: [AuthorityGuard] },
+          { path: 'shipment', component: ShipmentmethodsComponent, canActivate: [AuthorityGuard] },
+          { path: 'support', component: ShopsupportComponent, canActivate: [AuthorityGuard] }
         ]
       },
       {
         path: 'usercontroller', component: UserControllerComponent, children: [
-          { path: 'users', component: UsersComponent },
-          { path: 'pointsystem', component: PointSystemComponent },
-          { path: 'chequesystem', component: ChequeSystemComponent },
-          { path: 'frontrunner', component: FrontRunnerComponent }
+          { path: 'users', component: UsersComponent, canActivate: [AuthorityGuard] },
+          { path: 'pointsystem', component: PointSystemComponent, canActivate: [AuthorityGuard] },
+          { path: 'chequesystem', component: ChequeSystemComponent, canActivate: [AuthorityGuard] },
+          { path: 'frontrunner', component: FrontRunnerComponent, canActivate: [AuthorityGuard] }
         ]
       },
       { path: 'home/blogcontroller', component: BlogControllerComponent },
       {
         path: 'updatecontroller', component: UpdateControllerComponent, children: [
-          { path: 'cronjob', component: CronjobComponent },
-          { path: 'xml/:link/:id', component: XmlComponent }
+          { path: 'cronjob', component: CronjobComponent, canActivate: [AuthorityGuard] },
+          { path: 'xml/:link/:id', component: XmlComponent, canActivate: [AuthorityGuard] }
         ]
       },
       {
         path: 'reportcontroller', component: ReportControllerComponent, children: [
-          { path: 'click', component: ClickComponent },
-          { path: 'search', component: SearchComponent }
+          { path: 'click', component: ClickComponent, canActivate: [AuthorityGuard] },
+          { path: 'search', component: SearchComponent, canActivate: [AuthorityGuard] }
         ]
       },
-      { path: 'staffcontroller', component: StaffControllerComponent },
+      { path: 'staffcontroller', component: StaffControllerComponent, canActivate: [AuthorityGuard] },
       {
         path: 'accountingcontroller', component: AccountingControllerComponent, children: [
-          { path: 'credits', component: CreditsComponent },
-          { path: 'livesupport', component: LivesupportComponent },
-          { path: 'adds', component: ShopAddsComponent }
+          { path: 'credits', component: CreditsComponent, canActivate: [AuthorityGuard] },
+          { path: 'livesupport', component: LivesupportComponent, canActivate: [AuthorityGuard] },
+          { path: 'adds', component: ShopAddsComponent, canActivate: [AuthorityGuard] }
         ]
       },
     ]
@@ -185,7 +188,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     NgxJsonViewerModule,
-    FileUploadModule
+    FileUploadModule,
+    NgSelectModule,
+    NgbModule
   ],
   providers: [
     {

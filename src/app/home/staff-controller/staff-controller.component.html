@@ -9,27 +9,30 @@
       <div class="row">
         <div class="col-md-10">
             <form class='form form-group'>
+              <div class="form-group" *ngIf="admin._id">
+                <img class="logo" style="max-width: 100px" src="{{apiUrl}}/{{admin.photo}}" alt="">
+              </div>
               <input id='firstName' class='formG form-control' type='text' name="firstName" [(ngModel)]="admin.firstName" value="{{admin.firstName}}" placeholder="Enter your name">
               <input id='lastName' class='formG form-control' type='text' name="lastName" [(ngModel)]="admin.lastName" value="{{admin.lastName}}" placeholder="Enter your surname">
               <input id='phone' class='formG form-control' type='text' name="phone" [(ngModel)]="admin.phone" value="{{admin.phone}}" placeholder="Enter your phone">
               <input id='email' class='formG form-control' type='text' name="email" [(ngModel)]="admin.email" value="{{admin.email}}" placeholder="Enter email">
               <input id='password' class='formG form-control' type='password' name="password" [(ngModel)]="admin.password" *ngIf="state == 'Ekle'" placeholder="Password">
               <div class="form-group">
-                <label for="exampleFormControlSelect2">Yetkisi</label>
-                <select class="form-control" name="authority" [value]="admin.authority" [(ngModel)]="admin.authority" id="exampleFormControlSelect2">
-                  <option value=0>0</option>
-                  <option value=1>1</option>
-                  <option value=2>2</option>
-                  <option value=3>3</option>
-                  <option value=4>4</option>
-                </select>
+                <ng-select [items]="pages"
+                           bindLabel="name"
+                           bindValue="path"
+                           [multiple]="true"
+                           placeholder="Erişim Sayfalarını Seç"
+                           groupBy="category"
+                           name="authority"
+                           id="authority"
+                           [(ngModel)]="admin.authority">
+                </ng-select>
               </div>
-              <!-- <form>
-                  <div class="form-group">
-                    <label for="exampleFormControlFile1">Slider Resmi Ekle</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                  </div>
-                </form> -->
+              <div *ngIf="admin._id">
+                <label for="photo" style="display: block" class="btn btn-outline-info">Firma logosunu Güncelle</label>
+                <input style="display: none" type=file name='photo' id='photo' (change)='upload()' ng2FileSelect [uploader]='adminService.uploader'>
+              </div>
               <button type="submit" class="btn btn-success" (click)="signUp(admin)" *ngIf="state == 'Ekle'">Ekle</button>
               <button type="submit" class="btn btn-success" (click)="adminUpdate(admin)" *ngIf="state == 'Güncelle'">Güncelle</button>
             </form>
@@ -47,7 +50,6 @@
             <div class="input-group">
               <div class="form-control">{{data.firstName}} {{data.lastName}}</div>
               <div class="input-group-append" id="button-addon4">
-                <button class="btn btn-info" type="button">Yetkisi</button>
                 <button class="btn btn-warning" type="button" (click)="adminSelect(data)">Güncelle</button>
                 <button class="btn btn-danger" type="button" (click)="remove(data._id, i)">Sil</button>
               </div>

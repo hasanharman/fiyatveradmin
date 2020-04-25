@@ -7,5 +7,5 @@ export class Admin {
     firstName: string;
     lastName: string;
     phone: string;
-    authority?: number;
+    authority?: Array<string>;
   }

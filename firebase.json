@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "target": "fiyatvar-admin",
+    "public": "dist/fiyatveradmin",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

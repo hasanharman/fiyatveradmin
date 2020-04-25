@@ -8,7 +8,7 @@ export class SearchService {
 
   constructor() { }
 
-  search(input: String, array: Array<Product>): Array<String> {
+  search(input: String, array: Array<any>): Array<String> {
     const queryList: Array<String> = new Array<String>();
     array.forEach(data => {
       Object.values(data).map( e => {

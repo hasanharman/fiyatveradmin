@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  apiUrl: 'http://fiyarvar-api.tk'
+  apiUrl: 'http://localhost:8080'
 };
 
 /*

@@ -14,4 +14,12 @@ export class UserService {
   public users(): Observable<object> {
     return this.http.get<User>(`${environment.apiUrl}/users`)
   }
+
+  public update(user: User): Observable<User> {
+    return this.http.post<User>(`${environment.apiUrl}/user/update/info/admincreditional`, user);
+  }
+
+  public remove(id: object): Observable<User> {
+    return this.http.post<User>(`${environment.apiUrl}/user/remove`, id);
+  }
 }

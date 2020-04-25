@@ -47,21 +47,58 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <input class="form-control" type="text" [value]="selectedProduct.category" [(ngModel)]="selectedProduct.category"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.subCategory" [(ngModel)]="selectedProduct.subCategory"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.microCategory" [(ngModel)]="selectedProduct.microCategory"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.name" [(ngModel)]="selectedProduct.name"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.price" [(ngModel)]="selectedProduct.price"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.model" [(ngModel)]="selectedProduct.model"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.brand" [(ngModel)]="selectedProduct.brand"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.imageUrl" [(ngModel)]="selectedProduct.imageUrl"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.link" [(ngModel)]="selectedProduct.link"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.cargo" [(ngModel)]="selectedProduct.cargo"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.available" [(ngModel)]="selectedProduct.available"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.details" [(ngModel)]="selectedProduct.details"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.productCode" [(ngModel)]="selectedProduct.productCode"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.eanUpcCode" [(ngModel)]="selectedProduct.eanUpcCode"><br>
-          <input class="form-control" type="text" [value]="selectedProduct.priceIncVat" [(ngModel)]="selectedProduct.priceIncVat"><br>
+          <div class="row form-group">
+            <label for="category" class="col-3">Kategori:</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.category" [(ngModel)]="selectedProduct.category">
+          </div>
+          <div class="row form-group">
+            <label for="category" class="col-3">Alt Kategori:</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.subCategory" [(ngModel)]="selectedProduct.subCategory">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">Mikro Kategori:</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.microCategory" [(ngModel)]="selectedProduct.microCategory">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">İsim</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.name" [(ngModel)]="selectedProduct.name">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">Fiyat</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.price" [(ngModel)]="selectedProduct.price">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">Model</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.model" [(ngModel)]="selectedProduct.model">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">Marka</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.brand" [(ngModel)]="selectedProduct.brand">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">Link</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.link" [(ngModel)]="selectedProduct.link">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">Cargo</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.cargo" [(ngModel)]="selectedProduct.cargo">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">Aktiflik Durumu</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.available" [(ngModel)]="selectedProduct.available">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">İçerik</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.details" [(ngModel)]="selectedProduct.details">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">Ürün Kodu</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.productCode" [(ngModel)]="selectedProduct.productCode">
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-3">EAN/UPC Kodu</label>
+            <input class="form-control col-8" type="text" [value]="selectedProduct.eanUpcCode" [(ngModel)]="selectedProduct.eanUpcCode">
+          </div>
         </div>
       </div>
       <div class="modal-footer">

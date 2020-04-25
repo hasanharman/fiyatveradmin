@@ -37,3 +37,15 @@ form.example::after {
 .row {
   margin: 2%;
 }
+.carousel-control-prev-icon{
+  background-image: url('https://apufpel.com.br/assets/img/seta_prim.png')
+}
+.carousel-control-next-icon{
+ background-image: url('https://apufpel.com.br/assets/img/seta_ult.png')
+}
+ngb-carousel {
+  width: 360px;
+}
+ol.carousel-indicators> li {
+  background-color: black;
+}
