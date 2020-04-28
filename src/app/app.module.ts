@@ -100,7 +100,7 @@ const appRoutes: Routes = [
       {
         path: 'updatecontroller', component: UpdateControllerComponent, children: [
           { path: 'cronjob', component: CronjobComponent, canActivate: [AuthorityGuard] },
-          { path: 'xml/:link/:id', component: XmlComponent, canActivate: [AuthorityGuard] }
+          { path: 'xml/:link/:id', component: XmlComponent }
         ]
       },
       {
