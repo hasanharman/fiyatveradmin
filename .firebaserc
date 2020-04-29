@@ -5,8 +5,7 @@
   "targets": {
     "fiyatvar-admin": {
       "hosting": {
-        "target-name": [
-          "admin",
+        "admin": [
           "fiyatvar-admin"
         ]
       }

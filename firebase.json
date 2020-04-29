@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "target": "fiyatvar-admin",
-    "public": "dist/fiyatveradmin",
+    "target": "admin",
+    "public": "dist/fiyatver-admin",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -100,7 +100,7 @@ const appRoutes: Routes = [
       {
         path: 'updatecontroller', component: UpdateControllerComponent, children: [
           { path: 'cronjob', component: CronjobComponent, canActivate: [AuthorityGuard] },
-          { path: 'xml/:link/:id', component: XmlComponent }
+          { path: 'xml/:link/:id', component: XmlComponent, canActivate: [AuthorityGuard] }
         ]
       },
       {
@@ -109,7 +109,7 @@ const appRoutes: Routes = [
           { path: 'search', component: SearchComponent, canActivate: [AuthorityGuard] }
         ]
       },
-      { path: 'staffcontroller', component: StaffControllerComponent, canActivate: [AuthorityGuard] },
+      { path: 'staffcontroller', component: StaffControllerComponent},
       {
         path: 'accountingcontroller', component: AccountingControllerComponent, children: [
           { path: 'credits', component: CreditsComponent, canActivate: [AuthorityGuard] },

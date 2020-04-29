@@ -8,10 +8,9 @@ export class AuthorityGuardService implements CanActivate{
   constructor(public auth: AuthService, public router: Router) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const authority = JSON.parse(localStorage.getItem('currentUser')).admin.authority;
-    console.log(authority, state.url)
-    if (authority && authority.indexOf(state.url) !== -1) {
+    console.log(authority, state.root, route)
+    if (authority && authority.indexOf(route.url[0].path) !== -1) {
       // logged in so return true
-      console.log("selam")
       return true;
     }
 
