@@ -41,6 +41,10 @@ export class StoreService {
     } );
   }
 
+  public signUp(store: Store): Observable<Store> {
+    return this.http.post<Store>(`${environment.apiUrl}/store/signup`, store);
+  }
+
   public stores(): Observable<object> {
     return this.http.get<Store>(`${environment.apiUrl}/stores`)
   }

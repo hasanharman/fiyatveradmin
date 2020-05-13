@@ -128,13 +128,13 @@
     </div>
     <div class="dataType">
       <h5>Veri Besleme</h5>
-      <select class="form-control" [(ngModel)]="product.imageUrl">
+      <select class="form-control" [(ngModel)]="product.images">
         <option *ngFor="let type of types" [value]="type">{{type}}</option>
       </select>
     </div>
     <div class="dataType">
       <h5>Örnek</h5>
-      <div *ngIf="product.imageUrl !== undefined">{{example[0][product.imageUrl]}}</div>
+      <div *ngIf="product.images !== undefined">{{example[0][product.images]}}</div>
     </div>
   </div>
   <div class="row rowClass">
@@ -272,13 +272,13 @@
     </div>
     <div class="dataType">
       <h5>Veri Besleme</h5>
-      <select class="form-control" [(ngModel)]="product.available">
+      <select class="form-control" [(ngModel)]="product.availability">
         <option *ngFor="let type of types" [value]="type">{{type}}</option>
       </select>
     </div>
     <div class="dataType">
       <h5>Örnek</h5>
-      <div *ngIf="product.available !== undefined">{{example[0][product.available]}}</div>
+      <div *ngIf="product.availability !== undefined">{{example[0][product.availability]}}</div>
     </div>
   </div>
   <!-- <div class="row rowClass">

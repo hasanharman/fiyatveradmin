@@ -24,9 +24,9 @@ export class CategoriesComponent implements OnInit {
   }
 
   removeCategory(i) {
-    const category = this.categories[i].category.name;
+    const category = this.categories[i].name;
     if (this.categories[i]._id !== undefined) {
-      this.categoryService.deteleCategory({"category": category}).subscribe(e => {
+      this.categoryService.deteleCategory({"name": category}).subscribe(e => {
         this.categories.splice(i, 1);
         this.microIndex = undefined;
         this.subIndex = undefined;
@@ -41,80 +41,83 @@ export class CategoriesComponent implements OnInit {
   }
 
   removeSubCategory(i) {
-    const category = this.categories[this.topIndex].category.name;
-    const subCategory = this.categories[this.topIndex].category.subCategory[i].name;
-    if (this.categories[this.topIndex].category.subCategory[i]._id !== undefined) {
-      this.categoryService.deleteSubCategory({"category": category, "subCategory": subCategory}).subscribe(e => {
-        this.categories[this.topIndex].category.subCategory.splice(i, 1);
+    const category = this.categories[this.topIndex].name;
+    const subCategory = this.categories[this.topIndex].children[i].name;
+    if (this.categories[this.topIndex].children[i]._id !== undefined) {
+      this.categoryService.deleteSubCategory({"name": category, "subName": subCategory}).subscribe(e => {
+        this.categories[this.topIndex].children.splice(i, 1);
         this.microIndex = undefined;
         this.subIndex = undefined;
       })
     } else {
-      this.categories[this.topIndex].category.subCategory.splice(i, 1);
+      this.categories[this.topIndex].children.splice(i, 1);
       this.microIndex = undefined;
       this.subIndex = undefined;
     }
   }
 
   removeMicroCategory(i) {
-    const category = this.categories[this.topIndex].category.name;
-    const subCategory = this.categories[this.topIndex].category.subCategory[this.subIndex].name;
-    const microCategory = this.categories[this.topIndex].category.subCategory[this.subIndex].microCategory[i].name;
-    const req = {"category": category, "subCategory": subCategory, "microCategory": microCategory};
-    if (this.categories[this.topIndex].category.subCategory[i]._id !== undefined) {
+    const category = this.categories[this.topIndex].name;
+    const subCategory = this.categories[this.topIndex].children[this.subIndex].name;
+    const microCategory = this.categories[this.topIndex].children[this.subIndex].children[i].name;
+    const req = {"name": category, "subName": subCategory, "microName": microCategory};
+    if (this.categories[this.topIndex].children[i]._id !== undefined) {
       this.categoryService.deleteMicroCategory(req).subscribe(e => {
-        this.categories[this.topIndex].category.subCategory[this.subIndex].microCategory.splice(i, 1);
+        this.categories[this.topIndex].children[this.subIndex].children.splice(i, 1);
         this.microIndex = undefined;
       })
     } else {
-      this.categories[this.topIndex].category.subCategory[this.subIndex].microCategory.splice(i, 1);
+      this.categories[this.topIndex].children[this.subIndex].children.splice(i, 1);
       this.microIndex = undefined;
     }
   }
 
   newCategory() {
     this.categories.unshift({
-      "category": {
-        "name": "",
-        "subCategory": []
-      }
+      "name": "",
+      "slug": ""
     });
     console.log(this.categories)
   }
 
   newSubCategory(i) {
-    this.categories[i].category.subCategory.unshift({
-      "microCategory": [],
+    this.categories[i].children.unshift({
+      "slug": "",
       "name": ""
     });
   }
 
   newMicroCategory(i, j) {
-    this.categories[i].category.subCategory[j].microCategory.unshift({
-      "name": ""
+    this.categories[i].children[j].children.unshift({
+      "name": "",
+      "slug": ""
     });
   }
 
   addCategory() {
-    const category = this.categories[this.topIndex].category;
-    this.categoryService.addCategory({"category": category}).subscribe(e => {
+    const category = this.categories[this.topIndex];
+    category.slug = category.name.replace(/ /gi, "-").toLowerCase();
+    console.log(category)
+    this.categoryService.addCategory(category).subscribe(e => {
       this.categories[this.topIndex] = e;
     });
   }
 
   addSubCategory() {
-    const category = this.categories[this.topIndex].category.subCategory[this.subIndex];
-    const req =  {"category": this.categories[this.topIndex].category.name, "subCategory": category};
+    const category = this.categories[this.topIndex].children[this.subIndex];
+    category.slug = category.name.replace(/ /gi, "-").toLowerCase();
+    const req =  {"name": this.categories[this.topIndex].name, "children": category};
     this.categoryService.addSubCategory(req).subscribe(e => {
       this.categories[this.topIndex] = e;
     });
   }
 
   addMicroCategory() {
-    const category = this.categories[this.topIndex].category.name;
-    const subCategory = this.categories[this.topIndex].category.subCategory[this.subIndex].name
-    const microCategory = this.categories[this.topIndex].category.subCategory[this.subIndex].microCategory[this.microIndex];
-    const req = {"category": category, "subCategory": subCategory, "microCategory":  microCategory}
+    const category = this.categories[this.topIndex].name;
+    const subCategory = this.categories[this.topIndex].children[this.subIndex].name
+    const microCategory = this.categories[this.topIndex].children[this.subIndex].children[this.microIndex];
+    microCategory.slug = microCategory.name.replace(/ /gi, "-").toLowerCase();
+    const req = {"name": category, "subName": subCategory, "children":  microCategory}
     this.categoryService.addMicroCategory(req).subscribe(e => {
       this.categories[this.topIndex] = e;
     });
@@ -123,7 +126,7 @@ export class CategoriesComponent implements OnInit {
   updateCategory(category) {
     const req = {
       "categoryId": category._id,
-      "newName": category.category.name
+      "newName": category.name
     };
     this.categoryService.updateCategory(req).subscribe(e => {
       this.categories[this.topIndex] = e;
@@ -144,7 +147,7 @@ export class CategoriesComponent implements OnInit {
   updateMicroCategory(micro) {
     const req = {
       "categoryId": this.categories[this.topIndex]._id,
-      "subCategoryId": this.categories[this.topIndex].category.subCategory[this.subIndex]._id,
+      "subCategoryId": this.categories[this.topIndex].children[this.subIndex]._id,
       "microCategoryId": micro._id,
       "newName": micro.name
     };

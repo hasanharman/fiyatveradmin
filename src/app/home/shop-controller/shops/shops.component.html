@@ -44,6 +44,10 @@
         <label for="telefon">Mağaza Telefon No</label>
         <input type="text" class="form-control" id="telefon" aria-describedby="emailHelp" name="phone" value="{{selectedStore.phone}}" [(ngModel)]="selectedStore.phone">
       </div>
+      <div class="form-group" *ngIf="!selectedStore._id">
+        <label for="password">Mağaza Şifre</label>
+        <input type="password" class="form-control" id="password" name="password" value="{{selectedStore.password}}" [(ngModel)]="selectedStore.password">
+      </div>
       <div class="form-group">
         <label for="link">Xml Linki</label>
         <input type="text" class="form-control" id="link" aria-describedby="emailHelp" name="link" value="{{selectedStore.xml.link}}" [(ngModel)]="selectedStore.xml.link">
@@ -80,7 +84,8 @@
   </div>
   <div class="row">
     <div class="col-md-5">
-      <button type="submit" class="btn btn-success form-group col" (click)="update(selectedStore)">Kaydet</button>
+      <button type="submit" class="btn btn-success form-group col" *ngIf="selectedStore._id" (click)="update(selectedStore)">Güncelle</button>
+      <button type="submit" class="btn btn-success form-group col" *ngIf="!selectedStore._id" (click)="signUp(selectedStore)">Kaydet</button>
     </div>
   </div>
 </form>

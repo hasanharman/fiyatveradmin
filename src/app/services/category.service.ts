@@ -27,7 +27,7 @@ export class CategoryService {
     return this.http.post<Category>(`${environment.apiUrl}/category/subcategory/microcategory/add`, microCategory);
   }
 
-  public deteleCategory(category: Category): Observable<object> {
+  public deteleCategory(category: any): Observable<object> {
     return this.http.post<Category>(`${environment.apiUrl}/category/delete`, category);
   }
 

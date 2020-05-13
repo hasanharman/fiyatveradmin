@@ -4,19 +4,22 @@ export class Product {
     subCategory: string;
     microCategory: string;
     name: string;
+    slug: string;
     price: number;
     model: string;
     brand: string;
     comments: Array<any>;
-    imageUrl: string;
+    images: any;
+    categories: Array<string>;
     link: string;
     cargo: boolean;
     storeId: string;
-    available: boolean;
+    availability: boolean;
     details: string;
     productCode: string;
     eanUpcCode: string;
     priceIncVat: string;
+    reviews: number;
     searchCount: {
       count: number;
       words: Array<any>;

@@ -4,15 +4,16 @@ export class Format {
     subCategory: string;
     microCategory: string;
     name: string;
+    slug: string;
     price: number;
     model: string;
     brand: string;
     comments: string;
-    imageUrl: string;
+    images: string;
     link: string;
     cargo: string;
     storeId: string;
-    available: string;
+    availability: string;
     details: string;
     productCode: string;
     eanUpcCode: string;

@@ -50,7 +50,7 @@ export class XmlComponent implements OnInit {
     this.storeService.xmlFormats().subscribe(e => {
       this.formats = e;
     })
-    this.iterableDiffer = iterableDiffers.find([]).create(null);
+    this.iterableDiffer = this.iterableDiffers.find([]).create(null);
   }
 
   ngOnInit() {
@@ -91,10 +91,28 @@ export class XmlComponent implements OnInit {
   addProducts() {
     this.example.forEach(element => {
       const newProduct: Product = new Product();
+      newProduct.categories = [];
+      newProduct.images = [];
       Object.keys(this.product).forEach(e => {
         try {
           if (e !== "none") {
             newProduct[e] = element[this.product[e]][0];
+            if (e === "name") {
+              newProduct.slug = element[this.product[e]][0].replace(/ /gi, "-").toLowerCase();
+            }
+            if (e === "images" && typeof element[this.product[e]][0] === "string") {
+              newProduct[e] = [element[this.product[e]][0]];
+            }
+            if (e === "category") {
+              newProduct.categories.push(element[this.product[e]][0]);
+            } else if (e === "subCategory") {
+              newProduct.categories.push(element[this.product[e]][0]);
+            } else if (e === "microCategory") {
+              newProduct.categories.push(element[this.product[e]][0]);
+            }
+            if(element[this.product[e]][0] == undefined || element[this.product[e]][0] == null || element[this.product[e]][0] == "") {
+              delete newProduct[e]
+            }
           }
         } catch (error) {}
         newProduct.storeId = this.id;
@@ -115,9 +133,7 @@ export class XmlComponent implements OnInit {
           this.router.navigate(["/home/shopcontroller/shops"]);
         }
       }
-    });
-
-    
+    });    
   }
 
   addFormat(state) {
@@ -125,6 +141,7 @@ export class XmlComponent implements OnInit {
       if (this.selectedFormat["_id"] === undefined) {
         this.selectedFormat.path = this.path;
         this.selectedFormat.name = this.selectedName;
+        this.selectedFormat.format = this.product
         this.storeService.xmlFormatAdd(this.selectedFormat).subscribe(e => {
           $(".addFormat").css({"display": "none"})
           this.router.navigate(["/home/shopcontroller/shops"]);
@@ -132,6 +149,7 @@ export class XmlComponent implements OnInit {
       } else {
         this.selectedFormat.path = this.path;
         this.selectedFormat.name = this.selectedName;
+        this.selectedFormat.format = this.product;
         delete this.selectedFormat["__v"];
         this.storeService.xmlFormatUpdate(this.selectedFormat).subscribe(e => {
           $(".addFormat").css({"display": "none"})

@@ -44,6 +44,16 @@ export class ShopsComponent implements OnInit {
     })
   }
 
+  signUp(store: Store) {
+    
+    this.storeService.signUp(store).subscribe(e => {
+      this.stores.push(e["store"]);
+      this.selectedStore = new Store();
+      this.selectedStore.xml = {"state": undefined, "link": ""};
+    })
+  }
+
+
   upload() {
     this.storeService.id = this.selectedStore._id;
     this.storeService.uploader.uploadAll();

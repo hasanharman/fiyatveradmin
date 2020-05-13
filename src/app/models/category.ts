@@ -1,19 +1,22 @@
 export class Category {
-  _id?: string;
-  category?: {
-      name?: string,
-      subCategory?: [
-          {
-              _id?: string;
-              name?: string;
-              microCategory?: [
-                  {
-                      _id?: string;
-                      name?: string;
-                  }
-              ]
-          }
-      ]
-  };
-  __v?: number
-  }
+    _id?: string;
+    name: string;
+    slug: string;
+    image?: string;
+    items: number;
+    children?: {
+        _id?: string;
+        name: string;
+        slug: string;
+        image?: string;
+        items: number;
+        children?: {
+            _id?: string;
+            name: string;
+            slug: string;
+            image?: string;
+            items: number;
+        }
+    }
+    __v?: number
+}

@@ -23,7 +23,7 @@
     <div type="text" class="form-control col-md-3" aria-label="product id">{{product._id}}</div>
     <div type="text" class="form-control col-md-7" style="overflow: hidden;" placeholder="product name" aria-label="mağaza adı">{{product.name}}</div>
     <div class="form-control col-md-2">
-      <input type="checkbox" name="available" id="available" [checked]="product.available" (change)="update(product)" [(ngModel)]="product.available">
+      <input type="checkbox" name="available" id="available" [checked]="product.availability" (change)="update(product)" [(ngModel)]="product.availability">
       <label for="available">Aktif/Pasif</label>
     </div>
     <div type="text" class="form-control col-md-1" placeholder="product price" aria-label="mağaza adı"
@@ -85,7 +85,7 @@
           </div>
           <div class="row form-group">
             <label for="" class="col-3">Aktiflik Durumu</label>
-            <input class="form-control col-8" type="text" [value]="selectedProduct.available" [(ngModel)]="selectedProduct.available">
+            <input class="form-control col-8" type="text" [value]="selectedProduct.availability" [(ngModel)]="selectedProduct.availability">
           </div>
           <div class="row form-group">
             <label for="" class="col-3">İçerik</label>
