@@ -30,7 +30,7 @@
                 </ng-select>
               </div>
               <div *ngIf="admin._id">
-                <label for="photo" style="display: block" class="btn btn-outline-info">Firma logosunu Güncelle</label>
+                <label for="photo" style="display: block" class="btn btn-outline-info">Personel Resmini Güncelle</label>
                 <input style="display: none" type=file name='photo' id='photo' (change)='upload()' ng2FileSelect [uploader]='adminService.uploader'>
               </div>
               <button type="submit" class="btn btn-success" (click)="signUp(admin)" *ngIf="state == 'Ekle'">Ekle</button>

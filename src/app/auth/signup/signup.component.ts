@@ -16,16 +16,16 @@ export class SignupComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private route: ActivatedRoute, private router: Router) {
   }
 
-  onSubmit(userData) {
-    this.auth.signup(userData.firstName, userData.lastName, userData.phone, userData.email, userData.password).subscribe(res => {
-      this.auth.login(userData.email, userData.password).subscribe(res => {
-        this.router.navigate([this.returnUrl])
-      }, error => {
-        this.error = error;
-      });
-      this.checkoutForm.reset();
-    });
-  }
+  // onSubmit(userData) {
+  //   this.auth.signup(userData.firstName, userData.lastName, userData.phone, userData.email, userData.password).subscribe(res => {
+  //     this.auth.login(userData.email, userData.password).subscribe(res => {
+  //       this.router.navigate([this.returnUrl])
+  //     }, error => {
+  //       this.error = error;
+  //     });
+  //     this.checkoutForm.reset();
+  //   });
+  // }
 
   ngOnInit() {
     this.checkoutForm = this.formBuilder.group({

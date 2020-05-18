@@ -36,13 +36,13 @@ login(email: string, password: string) {
       }));
 }
 
-signup(firstName: string, lastName: string, phone: string, email: string, password: string) {
+signup(firstName: string, lastName: string, phone: string, email: string, password: string, authority: Array<string>) {
   const httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*'
     })
   };
-  return this.http.post<Admin>(`${environment.apiUrl}/admin/signup`, {firstName, lastName, phone, email, password, "authority": 0}, httpOptions)
+  return this.http.post<Admin>(`${environment.apiUrl}/admin/signup`, {firstName, lastName, phone, email, password, authority}, httpOptions)
     .pipe(map(user => {
       // localStorage.setItem('currentUser', JSON.stringify(user));
       // this.currentUserSubject.next(user);

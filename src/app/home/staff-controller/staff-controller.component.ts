@@ -56,12 +56,13 @@ export class StaffControllerComponent implements OnInit {
     });
   }
 
-  signUp(userData) {
-    this.auth.signup(userData.firstName, userData.lastName, userData.phone, userData.email, userData.password).subscribe(res => {
+  signUp(userData: Admin) {
+    console.log(userData)
+    this.auth.signup(userData.firstName, userData.lastName, userData.phone, userData.email, userData.password, userData.authority).subscribe(res => {
       if (res !== undefined && res !== null) {
         this.admins.push(res["admin"])
       }
-      this.checkoutForm.reset();
+      this.admin = new Admin();
     });
   }
   show(e) {
