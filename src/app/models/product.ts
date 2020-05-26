@@ -20,6 +20,8 @@ export class Product {
     eanUpcCode: string;
     priceIncVat: string;
     reviews: number;
+    state: Number;
+    sameProducts?: Array<object>;
     searchCount: {
       count: number;
       words: Array<any>;

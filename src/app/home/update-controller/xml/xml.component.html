@@ -56,6 +56,13 @@
       <h5>Örnek</h5>
       <div *ngIf="product.category !== undefined">{{example[0][product.category]}}</div>
     </div>
+    <div class="dataType">
+      <h5>Ana Kategori Tanımla</h5>
+      <select class="form-control" [(ngModel)]="topCategory" (change)="changeHandler($event, 'top')">
+        <option selected="selected" [value]="">None</option>
+        <option *ngFor="let type of topCategories" [value]="type">{{type}}</option>
+      </select>
+    </div>
   </div>
   <div class="row rowClass">
     <div class="dataType">
@@ -72,11 +79,18 @@
       <h5>Örnek</h5>
       <div *ngIf=" product.subCategory !== undefined">{{example[0][product.subCategory]}}</div>
     </div>
+    <div class="dataType">
+      <h5>Alt Kategori Tanımla</h5>
+      <select class="form-control" [(ngModel)]="subCategory" (change)="changeHandler($event, 'sub')">
+        <option selected="selected" [value]="">None</option>
+        <option *ngFor="let type of subCategories[sub]" [value]="type">{{type}}</option>
+      </select>
+    </div>
   </div>
   <div class="row rowClass">
     <div class="dataType">
       <h5>Veri Tabanı</h5>
-      <p>MikroKategori:</p>
+      <p>Mikro Kategori:</p>
     </div>
     <div class="dataType">
       <h5>Veri Besleme</h5>
@@ -87,6 +101,13 @@
     <div class="dataType">
       <h5>Örnek</h5>
       <div *ngIf="product.microCategory !== undefined">{{example[0][product.microCategory]}}</div>
+    </div>
+    <div class="dataType">
+      <h5>Micro Kategori Tanımla</h5>
+      <select class="form-control" [(ngModel)]="microCategory" (change)="changeHandler($event, 'micro')">
+        <option selected="selected" [value]="">None</option>
+        <option *ngFor="let type of microCategories[micro]" [value]="type">{{type}}</option>
+      </select>
     </div>
   </div>
   <div class="row rowClass">

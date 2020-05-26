@@ -15,12 +15,19 @@
   </div>
 </div>
 
+<div class="row">
+  <button type="button" *ngIf="!common" class="btn btn-info" (click)="commonProducts()">Ortak Ürünleri Gör</button>
+</div>
+
 <div class="row" style="margin-top: 3%;">
   <h5>Aktif Ürünler</h5>
 </div>
 <div class="row">
+  <img *ngIf="loading" src="../../../../assets/loader.svg"/>
+</div>
+<div *ngIf="!loading" class="row">
   <div class="input-group col-md-11" role="group" aria-label="product box" *ngFor="let product of products; let i = index">
-    <div type="text" class="form-control col-md-3" aria-label="product id">{{product._id}}</div>
+    <div [ngClass]="{'bg-danger': product['state'] == 0, 'warning': product['state'] == 1, 'warning': product['state'] == 2, 'bg-success': product['state'] == 3 }" type="text" class="form-control col-md-3 text-white" aria-label="product id">{{product._id}}</div>
     <div type="text" class="form-control col-md-7" style="overflow: hidden;" placeholder="product name" aria-label="mağaza adı">{{product.name}}</div>
     <div class="form-control col-md-2">
       <input type="checkbox" name="available" id="available" [checked]="product.availability" (change)="update(product)" [(ngModel)]="product.availability">
@@ -34,6 +41,24 @@
       <button type="button" class="btn btn-danger" (click)="remove(product._id, i)">Sil</button>
     </div>
   </div>
+</div>
+<div class="row justify-content-center">
+  <li class="page-item" [class.disabled]="current <= 1">
+    <a class="page-link page-link--with-arrow" aria-label="Previous" (click)="setPage(current - 1)">
+        <
+    </a>
+</li>
+<li *ngFor="let page of pages; trackBy: trackByFn" class="page-item" [class.active]="page === current">
+  <a class="page-link" (click)="setPage(page)">
+      {{ page }}
+      <span *ngIf="page === current" class="sr-only">(current)</span>
+  </a>
+</li>
+<li class="page-item" [class.disabled]="current >= total">
+  <a class="page-link page-link--with-arrow" aria-label="Next" (click)="setPage(current + 1)">
+      >
+  </a>
+</li>
 </div>
 <div class="modal fade" id="edit-panel" tabindex="-1" role="dialog"
   aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -102,6 +127,7 @@
         </div>
       </div>
       <div class="modal-footer">
+        <button *ngIf="selectedProduct.sameProducts" type="button" class="btn btn-info" data-dismiss="modal" (click)="connectedProducts(selectedProduct.sameProducts)">Bağlı Ürünleri Göster</button>
         <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(selectedProduct)">Değişiklikleri Kaydet</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
       </div>

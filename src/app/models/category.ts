@@ -4,19 +4,19 @@ export class Category {
     slug: string;
     image?: string;
     items: number;
-    children?: {
+    children?: [{
         _id?: string;
         name: string;
         slug: string;
         image?: string;
         items: number;
-        children?: {
+        children?: [{
             _id?: string;
             name: string;
             slug: string;
             image?: string;
             items: number;
-        }
-    }
+        }]
+    }]
     __v?: number
 }

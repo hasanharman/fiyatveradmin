@@ -1,3 +1,5 @@
+import { Category } from './../../../models/category';
+import { CategoryService } from './../../../services/category.service';
 import { Format } from './../../../models/format';
 import { ProductService } from 'src/app/services/product.service';
 import { StoreService } from './../../../services/store.service';
@@ -16,6 +18,15 @@ declare var $: any;
   styleUrls: ['./xml.component.css']
 })
 export class XmlComponent implements OnInit {
+  categories: Category[];
+  topCategory = "";
+  topCategories = [];
+  sub = "all";
+  micro = "all";
+  subCategory = "";
+  subCategories = {"all": []};
+  microCategory = "";
+  microCategories = {"all": []};
   link: string;
   id: string;
   data;
@@ -38,7 +49,8 @@ export class XmlComponent implements OnInit {
     private route: ActivatedRoute,
     private storeService: StoreService,
     private productService: ProductService,
-    private iterableDiffers: IterableDiffers
+    private iterableDiffers: IterableDiffers,
+    private categoryService: CategoryService
     ) {
     this.route.params.subscribe(e => {
       this.link = e.link;
@@ -47,6 +59,10 @@ export class XmlComponent implements OnInit {
         this.data = e;
       });
     });
+    this.categoryService.categories().subscribe(categories => {
+      this.categories = categories;
+      this.distrubuteCategory(categories);
+    })
     this.storeService.xmlFormats().subscribe(e => {
       this.formats = e;
     })
@@ -54,6 +70,43 @@ export class XmlComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  distrubuteCategory(categories) {
+    categories.map(top => {
+      this.topCategories.push(top.name)
+      top.children.map(sub => {
+        if ( this.subCategories[top.name] ) {
+          this.subCategories[top.name].push(sub.name)
+        } else {
+          this.subCategories[top.name] = [sub.name];
+        }
+        this.subCategories["all"].push(sub.name);
+        sub.children.map(micro => {
+          if ( this.microCategories[sub.name] ) {
+            this.microCategories[sub.name].push(micro.name)
+          } else {
+            this.microCategories[sub.name] = [micro.name];
+          }
+          this.microCategories["all"].push(micro.name);
+        })
+      });
+    })
+  }
+
+  changeHandler(e, type) {
+    const category = e.target.value;
+    switch (type) {
+      case 'top':
+        this.sub = category;
+        break;
+      case 'sub':
+        this.micro = category;
+        break;
+      case 'micro':
+        
+        break;
+    }
   }
 
   ngDoCheck() {
@@ -89,6 +142,8 @@ export class XmlComponent implements OnInit {
   }
 
   addProducts() {
+    console.log(this.topCategory, this.subCategory, this.microCategory)
+    console.log(this.product)
     this.example.forEach(element => {
       const newProduct: Product = new Product();
       newProduct.categories = [];
@@ -104,19 +159,31 @@ export class XmlComponent implements OnInit {
               newProduct[e] = [element[this.product[e]][0]];
             }
             if (e === "category") {
-              newProduct.categories.push(element[this.product[e]][0]);
+              newProduct.categories.push(this.topCategory !== "" ? this.topCategory.replace(/ /gi, "-").toLowerCase() : element[this.product[e]][0].replace(/ /gi, "-").toLowerCase());
             } else if (e === "subCategory") {
-              newProduct.categories.push(element[this.product[e]][0]);
+              newProduct.categories.push(this.subCategory !== "" ? this.subCategory.replace(/ /gi, "-").toLowerCase() : element[this.product[e]][0].replace(/ /gi, "-").toLowerCase());
             } else if (e === "microCategory") {
-              newProduct.categories.push(element[this.product[e]][0]);
+              newProduct.categories.push(this.microCategory !== "" ? this.microCategory.replace(/ /gi, "-").toLowerCase() : element[this.product[e]][0].replace(/ /gi, "-").toLowerCase());
             }
-            if(element[this.product[e]][0] == undefined || element[this.product[e]][0] == null || element[this.product[e]][0] == "") {
+            if(newProduct[e] == undefined || newProduct[e] == null || newProduct[e] == "") {
               delete newProduct[e]
             }
           }
         } catch (error) {}
         newProduct.storeId = this.id;
       })
+      if (this.topCategory !== "" && this.topCategory !== "None") {
+        newProduct["category"] = this.topCategory;
+        newProduct.categories.push(this.topCategory.replace(/ /gi, "-").toLowerCase())
+      }
+      if (this.subCategory !== "" && this.subCategory !== "None") {
+        newProduct["subCategory"] = this.subCategory;
+        newProduct.categories.push(this.subCategory.replace(/ /gi, "-").toLowerCase());
+      }
+      if (this.microCategory !== "" && this.microCategory !== "None") {
+        newProduct["microCategory"] = this.microCategory;
+        newProduct.categories.push(this.microCategory.replace(/ /gi, "-").toLowerCase());
+      }
       TweenMax.set(document.getElementsByClassName("alert"), {css: {"opacity": 1, "margin-top": "calc(100vh - 300px)"}});
       this.productService.addProduct(newProduct).subscribe(e => {
         TweenMax.set(document.getElementsByClassName("alert"), {css: {"opacity": 1, "margin-top": "calc(100vh - 300px)"}});

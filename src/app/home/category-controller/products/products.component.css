@@ -29,3 +29,17 @@
     float: right!important;
     margin: 1%;
 }
+.warning, .undefined {
+  background-color: #FFC107!important;
+  color: rgb(44, 44, 44)!important;
+}
+.page-item {
+  list-style-type: none;
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}

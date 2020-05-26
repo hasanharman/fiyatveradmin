@@ -34,8 +34,12 @@ export class ProductService {
       console.log(req);
       return this.http.post<Product>(`${environment.apiUrl}/products/filter`, req);
     } else {
-      return this.http.get<Product>(`${environment.apiUrl}/products/query`);
+      return this.http.get<Product>(`${environment.apiUrl}/products/common`);
     }
+  }
+
+  public getProductsByPage(page: string): Observable<object> {
+    return this.http.get(`${environment.apiUrl}/products/common`, {params: {"page": page}})
   }
 
   public updateProduct(product: Product): Observable<object> {
