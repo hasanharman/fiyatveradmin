@@ -27,7 +27,7 @@
 </div>
 <div *ngIf="!loading" class="row">
   <div class="input-group col-md-11" role="group" aria-label="product box" *ngFor="let product of products; let i = index">
-    <div [ngClass]="{'bg-danger': product['state'] == 0, 'warning': product['state'] == 1, 'warning': product['state'] == 2, 'bg-success': product['state'] == 3 }" type="text" class="form-control col-md-3 text-white" aria-label="product id">{{product._id}}</div>
+    <div [ngClass]="{'bg-danger': product['state'] == 0, 'bg-warning': product['state'] == 1, 'bg-warning text-white': product['state'] == 2, 'bg-success': product['state'] == 3 }" type="text" class="form-control col-md-3 text-white" aria-label="product id">{{product._id}}</div>
     <div type="text" class="form-control col-md-7" style="overflow: hidden;" placeholder="product name" aria-label="mağaza adı">{{product.name}}</div>
     <div class="form-control col-md-2">
       <input type="checkbox" name="available" id="available" [checked]="product.availability" (change)="update(product)" [(ngModel)]="product.availability">

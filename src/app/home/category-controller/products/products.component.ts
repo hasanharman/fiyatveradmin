@@ -101,7 +101,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  connectedProducts(ids: Array<string>) {
+  connectedProducts(ids: Array<any>) {
     this.setPage(1);
     this.loading = true;
     this.productService.productIds = Object.values(ids);
