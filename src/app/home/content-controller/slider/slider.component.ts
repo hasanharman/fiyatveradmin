@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class SliderComponent implements OnInit {
   sliders: Observable<Array<object>>;
   sizes: Array<string> = [];
-  slides: object | undefined;
+  slides: {[key: string]: string} | undefined;
   selected = {
     0: 1110,
     1: 930,
@@ -69,7 +69,7 @@ export class SliderComponent implements OnInit {
     console.log(size, item)
   }
 
-  setSlider(e: object | undefined) {
+  setSlider(e: {[key: string]: string} | undefined) {
     if (typeof e == 'object') {
       delete e["__v"]
     }

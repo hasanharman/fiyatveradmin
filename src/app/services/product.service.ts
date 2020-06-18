@@ -46,6 +46,10 @@ export class ProductService {
     return this.http.post<Product>(`${environment.apiUrl}/store/update/product`, product);
   }
 
+  public updateCommonProduct(product: Product): Observable<object> {
+    return this.http.post<Product>(`${environment.apiUrl}/store/update/commonproduct`, product);
+  }
+
   public removeProduct(id: string): Observable<object> {
     return this.http.post(`${environment.apiUrl}/store/delete/product`, {"_id": id});
   }

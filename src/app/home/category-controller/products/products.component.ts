@@ -70,7 +70,7 @@ export class ProductsComponent implements OnInit {
           this.microCategories["all"].push(micro.name);
         })
       });
-    })
+    });
   }
 
   changeHandler(e, type) {
@@ -85,6 +85,15 @@ export class ProductsComponent implements OnInit {
       case 'micro':
         
         break;
+    }
+  }
+
+  autoChanger(product: Product) {
+    if (product.category) {
+      this.sub = product.category;
+    }
+    if (product.subCategory) {
+      this.micro = product.subCategory;
     }
   }
 
@@ -175,8 +184,13 @@ writeValue(obj: any): void {
     delete product["__v"];
     delete product.searchCount;
     delete product.clickCount;
-    this.productService.updateProduct(product).subscribe(e => {
-      console.log(e);
+    delete product.keys;
+    delete product.sameProducts;
+    delete product.reviews;
+    delete product.state;
+    delete product.cheapest;
+    this.productService.updateCommonProduct(product).subscribe(e => {
+      this.commonProducts();
     });
   }
 

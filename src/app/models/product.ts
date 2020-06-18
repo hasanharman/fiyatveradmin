@@ -22,9 +22,12 @@ export class Product {
     reviews: number;
     state: Number;
     sameProducts?: Array<object>;
+    editor?: boolean;
     searchCount: {
       count: number;
       words: Array<any>;
     };
     clickCount: number;
+    keys?: Array<string>;
+    cheapest?: number;
   }

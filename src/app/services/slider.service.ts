@@ -92,6 +92,6 @@ export class SliderService {
   }
 
   get sliders(): Observable<Array<object>> {
-    return this.http.get<Array<object>>("http://localhost:8080/sliders");
+    return this.http.get<Array<object>>(`${environment.apiUrl}/sliders`);
   }
 } 
