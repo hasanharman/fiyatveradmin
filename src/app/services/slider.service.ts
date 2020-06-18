@@ -91,6 +91,11 @@ export class SliderService {
 
   }
 
+  updateSliderUrl(id, url): Observable<any> {
+    console.log(environment.apiUrl)
+    return this.http.post(`${environment.apiUrl}/slider/update/url`, { "_id": id, "url": url });
+  }
+
   get sliders(): Observable<Array<object>> {
     return this.http.get<Array<object>>(`${environment.apiUrl}/sliders`);
   }

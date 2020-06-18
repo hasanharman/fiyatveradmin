@@ -20,6 +20,7 @@ export class SliderComponent implements OnInit {
     3: 510,
     4: 300
   }
+  url;
   api = environment.apiUrl;
   constructor(public sliderService: SliderService) {
     this.sliders = this.sliderService.sliders
@@ -36,7 +37,7 @@ export class SliderComponent implements OnInit {
     this.uploader(0, id)
   }
 
-  uploader(i, id?) {
+  uploader(i, id?, url?) {
     let items = this.sliderService.uploader.queue;
     items[i].url = id ? `${environment.apiUrl}/slider/add?size=${this.selected[i]}&id=${id}` : `${environment.apiUrl}/slider/add?size=${this.selected[i]}`
     items[i].upload()
@@ -51,6 +52,10 @@ export class SliderComponent implements OnInit {
         this.sliderService.uploader.clearQueue()
         this.sliders = this.sliderService.sliders
         this.slides = undefined;
+        const link = url ? url : this.url;
+        this.sliderService.updateSliderUrl(JSON.parse(response)["_id"], link).subscribe(e => {
+          console.log(e);
+        })
       }
   };
     // if (this.selected[i]) {
@@ -58,6 +63,12 @@ export class SliderComponent implements OnInit {
     //     this.uploader(i);
     //   })
     // }
+  };
+
+  updateSliderUrl(id) {
+    this.sliderService.updateSliderUrl(id, this.slides.url).subscribe(e => {
+      console.log(e);
+    })
   }
 
   

@@ -25,6 +25,11 @@
                 </div>
               </div>
             </div>
+            <div class="row add-btn align-items-center form-group"  *ngIf="slides">
+              <label for="url">Link: </label>
+              <input type="text" class="form-control col" name="url" id="url" [value]="slides.url" [(ngModel)]="slides.url">
+              <div class="btn btn-warning" (click)="updateSliderUrl(slides._id)">URL'i Güncelle</div>
+            </div>
           </div>
           <table class="table" *ngIf="sliderService.uploader.queue?.length > 0">
             <thead>
@@ -70,6 +75,10 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="row add-btn align-items-center form-group"  *ngIf="!slides && sliderService.uploader.queue?.length > 0">
+          <label for="url">Link: </label>
+          <input type="text" class="form-control col-5" name="url" id="url" [(ngModel)]="url">
         </div>
         <div class="row add-btn">
           <div class="btn btn-success" *ngIf="!slides && sliderService.uploader.queue?.length > 0" (click)="uploadAll()">EKLE</div>
