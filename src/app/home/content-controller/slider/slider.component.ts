@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import { SliderService } from './../../../services/slider.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -24,6 +23,7 @@ export class SliderComponent implements OnInit {
   api = environment.apiUrl;
   constructor(public sliderService: SliderService) {
     this.sliders = this.sliderService.sliders
+    this.sliderService.uploader.clearQueue()
   }
 
   ngOnInit() {

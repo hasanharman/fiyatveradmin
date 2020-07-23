@@ -1,71 +1,106 @@
-    <div class="row">
-        <h1>Banner Yönetimi</h1>
-      </div>
-      <div class="row">
-        <h5>Yeni Banner Ekle</h5>
-      </div>
-      <div class="row">
-        <div class="col-md-10">
-          <form>
-              <div class="form-group">
-                <label for="examplebaslik">Banner Adı</label>
-                <input type="text" class="form-control" id="examplebaslik" aria-describedby="emailHelp">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect2">Banner konumu</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <form>
-                  <div class="form-group">
-                    <label for="exampleFormControlFile1">Banner Resmi Ekle</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                  </div>
-                </form>
-              <button type="submit" class="btn btn-success">Kaydet</button>
-            </form>
-        </div>
-      </div>
-      
-      <div class="row" style="margin-top: 3%;">
-        <h5>Aktif Bannerlar</h5>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-10">
-          <!-- ngFor duyuru döngüsü burada olacak -->
-          <form>
-            <div class="form-group">
-              <label for="examplebaslik">Banner Adı</label>
-              <input type="text" class="form-control" id="examplebaslik" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect2">Banner konumu</label>
-              <select multiple class="form-control" id="exampleFormControlSelect2">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <form>
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Banner Resmi Ekle</label>
-                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+<div class="row">
+  <h1>Banner Yönetimi</h1>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <form>
+        <!-- <div class="form-group" *ngIf="banner">
+          <div class="btn btn-success add-btn" (click)="setBanner(undefined)">Yeni Banner</div>
+        </div> -->
+        <div class="form-group">
+          <label for="multiple-selection" class="btn btn-primary add-btn" *ngIf="!banner">Çoklu Banner Seç</label>
+          <div class="alert alert-danger add-btn" role="alert">
+            En Fazla 5 Resim Seçin. Seçilen Resimlerin Boyutlarını Ayarlamayı Unutmayın!
+          </div>
+          <input type="file" id="multiple-selection" class="hidden-file" ng2FileSelect [uploader]="sliderService.uploader" multiple  /><br/>
+          <div class="row">
+            <div class="group row" *ngFor="let b of banner | keyvalue | slice:1; let i = index">
+              <div class="card col" style="width: 15rem;">
+                <div class="card-title">{{i + 1}}. Resim ({{b.key}})</div>
+                <img class="card-img-left" style="width: 13rem;" [src]="api+'/'+b.value" alt="Card image cap">
+                <div class="card-body row">
+                  <label for="single-selection" class="btn btn-warning" *ngIf="banner">Güncelle</label>
+                  <input type="file" id="single-selection" class="hidden-file" ng2FileSelect [uploader]="sliderService.uploader"/>
+                  <label class="btn btn-danger">Sil</label>
                 </div>
-              </form>
-            <button type="submit" class="btn btn-danger">Sil</button>
-            <button type="submit" class="btn btn-warning">Güncelle</button>
-          </form>
-
-
+              </div>
+            </div>
+            <div class="row add-btn align-items-center form-group"  *ngIf="banner">
+              <label for="url">Link: </label>
+              <input type="text" class="form-control col" name="url" id="url" [value]="banner.url" [(ngModel)]="banner.url">
+              <div class="btn btn-warning" (click)="updateBannerUrl(banner._id)">URL'i Güncelle</div>
+            </div>
+          </div>
+          <table class="table" *ngIf="sliderService.uploader.queue?.length > 0">
+            <thead>
+              <tr>
+                <th>İsim/Resim</th>
+                <th>MB Boyutu</th>
+                <th>Yüklenme Barı</th>
+                <th>Durum</th>
+                <th>PX Boyutu</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr></tr>
+            <tbody *ngIf="sliderService.uploader.queue?.length > 0">
+              <tr *ngFor="let item of sliderService.uploader.queue; let i = index">
+                <td><strong>{{ item?.file?.name }}</strong></td>
+                <td *ngIf="sliderService.uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                <td *ngIf="sliderService.uploader.options.isHTML5">
+                  <div class="progress" style="margin-bottom: 0;">
+                      <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                  <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                  <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+              </td>
+              <td>
+                <select name="{{i}}" [(ngModel)]="selected[i]">
+                  <option [ngValue]="1110">1110 x 440</option>
+                  <option [ngValue]="930">930 x 440</option>
+                  <option [ngValue]="690">690 x 440</option>
+                  <option [ngValue]="510">510 x 395</option>
+                  <option [ngValue]="300">300 x 395</option>
+                </select>
+              </td>
+              <td nowrap>
+                  <button type="button" class="btn btn-danger btn-xs"
+                          (click)="item.remove()">
+                      <span class="glyphicon glyphicon-trash"></span> Sil
+                  </button>
+              </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+        <div class="row add-btn align-items-center form-group"  *ngIf="!banner && sliderService.uploader.queue?.length > 0">
+          <label for="url">Link: </label>
+          <input type="text" class="form-control col-5" name="url" id="url" [(ngModel)]="url">
+        </div>
+        <div class="row add-btn">
+          <div class="btn btn-success" *ngIf="!banner && sliderService.uploader.queue?.length > 0" (click)="uploadAll()">EKLE</div>
+        </div>
+        <div class="row add-btn">
+          <div class="btn btn-success" *ngIf="banner && sliderService.uploader.queue?.length > 0" (click)="updateAll(banner['_id'])">Güncelle</div>
+        </div>
+      </form>
+  </div>
+</div>
+<div class="row">
+  <h1>Banner Resimleri(Responsive)</h1>
+</div>
+<div class="row">
+  <div class="group row" *ngFor="let banner of banners | async; let i = index">
+    <div class="card col" *ngFor="let b of banner | keyvalue | slice:2:3" style="width: 15rem;">
+      <div class="card-title">{{i + 1}}. Banner'ın resimleri</div>
+      <img class="card-img-left" style="width: 13rem;" [src]="api+'/'+b.value" alt="Card image cap">
+      <div class="card-body row">
+          <div class="btn btn-warning" (click)="setBanner(banner)">Güncelle</div>
+          <div class="btn btn-danger">Sil</div>
       </div>
-  
-      
+    </div>
+  </div>
+</div>
