@@ -60,7 +60,9 @@ declare var $: any;
 const appRoutes: Routes = [
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard],children: [
-      { path: 'homepage', component: HomePageComponent, canActivate: [AuthorityGuard] },
+      { path: 'homepage', component: HomePageComponent, 
+      // canActivate: [AuthorityGuard] 
+    },
       {
         path: 'contentcontroller', component: ContentControllerComponent, children: [
           { path: 'pages', component: PagesComponent, canActivate: [AuthorityGuard] },
