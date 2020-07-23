@@ -2,3 +2,10 @@
     width: 75vw;
     margin: 1vw;
 }
+.firstRow {
+    margin-bottom: 2vh;
+}
+.cardimage {
+    width: 22vw;
+    height: 14vw!important;
+}
