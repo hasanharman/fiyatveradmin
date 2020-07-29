@@ -50,18 +50,19 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService as AuthGuard} from './guards/auth-guard.service';
 import { AuthorityGuardService as AuthorityGuard } from './guards/authority-guard.service';
 import { ShopAddsComponent } from './home/accounting-controller/shop-adds/shop-adds.component';
+import { ReferencesComponent } from './home/shop-controller/references/references.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { FileUploadModule } from '../../node_modules/ng2-file-upload';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 declare var $: any;
 
 
 const appRoutes: Routes = [
   {
-    path: 'home', component: HomeComponent, canActivate: [AuthGuard],children: [
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
       { path: 'homepage', component: HomePageComponent, 
-      // canActivate: [AuthorityGuard] 
     },
       {
         path: 'contentcontroller', component: ContentControllerComponent, children: [
@@ -87,7 +88,8 @@ const appRoutes: Routes = [
           { path: 'shops', component: ShopsComponent, canActivate: [AuthorityGuard] },
           { path: 'payment', component: PaymentmethodsComponent, canActivate: [AuthorityGuard] },
           { path: 'shipment', component: ShipmentmethodsComponent, canActivate: [AuthorityGuard] },
-          { path: 'support', component: ShopsupportComponent, canActivate: [AuthorityGuard] }
+          { path: 'support', component: ShopsupportComponent, canActivate: [AuthorityGuard] },
+          { path: 'reference', component: ReferencesComponent }
         ]
       },
       {
@@ -177,6 +179,7 @@ const appRoutes: Routes = [
     HomePageComponent,
     AgreementComponent,
     ShopAddsComponent,
+    ReferencesComponent,
   ],
   imports: [
     RouterModule.forRoot(

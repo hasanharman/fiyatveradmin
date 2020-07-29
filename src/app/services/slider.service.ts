@@ -3,14 +3,12 @@ import { FileUploader } from '../../../node_modules/ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
 export class SliderService {
-  currentUser;
   uploader: FileUploader = new FileUploader({
-    itemAlias: 'photo'
+    itemAlias: 'photo',
     // formatDataFunctionIsAsync: true,
     // formatDataFunction: async (item) => {
     //   return new Promise( (resolve, reject) => {
@@ -27,9 +25,7 @@ export class SliderService {
   hasAnotherDropZoneOver: boolean;
   response: string;
   id;
-  constructor(private http: HttpClient, private authenticationService: AuthService) {
-    this.currentUser = this.authenticationService.currentUserValue;
-    this.uploader.options.authToken = `Bearer ${this.currentUser.token}`
+  constructor(private http: HttpClient) {
     this.uploader.onAfterAddingAll = (file) => { file.withCredentials = false; };
     // tslint:disable-next-line: max-line-length
     this.uploader.onBeforeUploadItem = (item) => {
@@ -95,21 +91,7 @@ export class SliderService {
 
   }
 
-  updateSliderUrl(id, url): Observable<any> {
-    console.log(environment.apiUrl)
-    return this.http.post(`${environment.apiUrl}/slider/update/url`, { "_id": id, "url": url });
-  }
-
-  updateBannerUrl(id, url): Observable<any> {
-    console.log(environment.apiUrl)
-    return this.http.post(`${environment.apiUrl}/banner/update/url`, { "_id": id, "url": url });
-  }
-
   get sliders(): Observable<Array<object>> {
     return this.http.get<Array<object>>(`${environment.apiUrl}/sliders`);
-  }
-
-  get banner(): Observable<Array<object>> {
-    return this.http.get<Array<object>>(`${environment.apiUrl}/banner`);
   }
 } 

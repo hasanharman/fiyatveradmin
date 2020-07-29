@@ -1,0 +1,94 @@
+<div class="contentStyle">
+  <!-- <router-outlet></router-outlet> -->
+  <div class="row">
+    <h1>Referans Yönetimi</h1>
+  </div>
+  <div class="row">
+    <h5>Referans kodu oluştur</h5>
+  </div>
+  <form>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="yetkili">Referans Kodu Adı</label>
+          <input type="text" class="form-control" id="example" name="firstName" value="">
+        </div>
+        <div class="row">
+          <h5 style="margin-right: 13%;">Kod Durumu</h5>
+          <div class="form-check" style="margin-right: 5%;">
+            <input class="form-check-input" type="radio" name="state" id="exampleRadios1" value=true>
+            <label class="form-check-label" for="exampleRadios1">
+              Aktif
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="state" id="exampleRadios2" value=false>
+            <label class="form-check-label" for="exampleRadios2">
+              Pasif
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="example-datetime-local-input">Kod geçerlilik tarihi</label>
+          <div>
+            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00"
+              id="example-datetime-local-input">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="yetkili">0-100₺ aralık ücreti</label>
+            <input type="text" class="form-control" id="example" name="firstName" value="">
+          </div>
+          <div class="form-group">
+            <label for="yetkili">101-250₺ aralık ücreti</label>
+            <input type="text" class="form-control" id="example" name="firstName" value="">
+          </div>
+          <div class="form-group">
+            <label for="yetkili">251-500₺ aralık ücreti</label>
+            <input type="text" class="form-control" id="example" name="firstName" value="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="yetkili">501-1000₺ aralık ücreti</label>
+            <input type="text" class="form-control" id="example" name="firstName" value="">
+          </div>
+          <div class="form-group">
+            <label for="yetkili">1001-5000₺ aralık ücreti</label>
+            <input type="text" class="form-control" id="example" name="firstName" value="">
+          </div>
+          <div class="form-group">
+            <label for="yetkili">+5000₺ aralık ücreti</label>
+            <input type="text" class="form-control" id="example" name="firstName" value="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-success">Kaydet</button>
+    </div>
+
+    <div class="row" style="margin-top: 3%;">
+      <h5>Aktif Referans Kodları</h5>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-10">
+        <!-- ngFor duyuru döngüsü burada olacak -->
+        <div>
+          <div class="input-group">
+            <div type="text" class="form-control" placeholder="mağaza adı" aria-label="mağaza adı"
+              aria-describedby="button-addon4">kod1</div>
+            <div class="input-group-append" id="button-addon4">
+              <button class="btn btn-warning" type="button">Güncelle</button>
+              <!-- Güncelle Mağaza sayfasına yönlendirir, isme göre yeni sayfa oluşturmalıyız,
+                        ya da hidden metodu ile yorumları açacağız  -->
+              <button class="btn btn-danger" type="button">Sil</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

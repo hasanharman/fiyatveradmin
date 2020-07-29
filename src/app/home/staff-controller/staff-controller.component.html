@@ -1,5 +1,4 @@
 <div class="contentStyle">
-    <!-- <router-outlet></router-outlet> -->
     <div class="row">
         <h1>Personel Yönetimi</h1>
       </div>
@@ -7,7 +6,7 @@
         <h5>Personel {{state}}</h5>
       </div>
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <form class='form form-group'>
               <div class="form-group" *ngIf="admin._id">
                 <img class="logo" style="max-width: 100px" src="{{apiUrl}}/{{admin.photo}}" alt="">
@@ -44,7 +43,7 @@
       </div>
       
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-8">
           <!-- ngFor duyuru döngüsü burada olacak -->
           <div *ngFor='let data of admins; let i = index'>
             <div class="input-group">

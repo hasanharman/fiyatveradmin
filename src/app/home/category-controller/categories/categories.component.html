@@ -8,10 +8,15 @@
   <div class="col-md-4">
     <button class="btn btn-outline-success" (click)="newCategory()">Yeni Kategori Ekle</button>
     <div class="input-group" *ngFor="let category of categories; let i = index">
-      <input type="text" class="form-control" (click)="topIndex = i; subIndex = undefined" (input)="categories[i].name = $event.target.value" value="{{categories[i].name}}" [ngModel]="categories[i].name">
+      <img src="/assets/homepage/logo.png" width="40" height="40">
+      <input type="text" class="form-control" (click)="topIndex = i; subIndex = undefined"
+        (input)="categories[i].name = $event.target.value" value="{{categories[i].name}}"
+        [ngModel]="categories[i].name">
       <div class="input-group-append" id="button-addon4">
-        <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id === undefined" (click)="addCategory()">Kaydet</button>
-        <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id !== undefined" (click)="updateCategory(category)">Güncelle</button>
+        <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id === undefined"
+          (click)="addCategory()">Kaydet</button>
+        <button class="btn btn-success" type="button" *ngIf="topIndex === i && category._id !== undefined"
+          (click)="updateCategory(category)">Güncelle</button>
         <button class="btn btn-danger" type="button" (click)="removeCategory(i)">Sil</button>
       </div>
     </div>
@@ -19,24 +24,32 @@
   <div class="col-md-4" *ngIf="topIndex !== undefined">
     <button class="btn btn-outline-success" (click)="newSubCategory(topIndex)">Yeni Alt Kategori Ekle</button>
     <div class="input-group" *ngFor="let sub of categories[topIndex].children; let i = index">
-      <input type="text" class="form-control" (click)="subIndex = i" value="{{sub.name}}" (input)="categories[topIndex].children[i].name = $event.target.value" ngModel="{{categories[topIndex].children[i].name}}">
+      <input type="text" class="form-control" (click)="subIndex = i" value="{{sub.name}}"
+        (input)="categories[topIndex].children[i].name = $event.target.value"
+        ngModel="{{categories[topIndex].children[i].name}}">
       <div class="input-group-append" id="button-addon4">
-        <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id === undefined" (click)="addSubCategory()">Kaydet</button>
-        <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id !== undefined" (click)="updateSubCategory(sub)">Güncelle</button>
+        <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id === undefined"
+          (click)="addSubCategory()">Kaydet</button>
+        <button class="btn btn-success" type="button" *ngIf="subIndex === i && sub._id !== undefined"
+          (click)="updateSubCategory(sub)">Güncelle</button>
         <button class="btn btn-danger" type="button" (click)="removeSubCategory(i)">Sil</button>
       </div>
     </div>
   </div>
   <div class="col-md-4" *ngIf="subIndex !== undefined">
-    <button class="btn btn-outline-success" (click)="newMicroCategory(topIndex, subIndex)">Yeni Mikro Kategori Ekle</button>
+    <button class="btn btn-outline-success" (click)="newMicroCategory(topIndex, subIndex)">Yeni Mikro Kategori
+      Ekle</button>
     <div class="input-group" *ngFor="let micro of categories[topIndex].children[subIndex].children; let i = index">
-      <input type="text" class="form-control" (click)="microIndex = i" value="{{micro.name}}" (input)="categories[topIndex].children[subIndex].children[i].name = $event.target.value" ngModel="{{categories[topIndex].children[subIndex].children[i].name}}">
+      <input type="text" class="form-control" (click)="microIndex = i" value="{{micro.name}}"
+        (input)="categories[topIndex].children[subIndex].children[i].name = $event.target.value"
+        ngModel="{{categories[topIndex].children[subIndex].children[i].name}}">
       <div class="input-group-append" id="button-addon4">
-        <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id === undefined" (click)="addMicroCategory()">Kaydet</button>
-        <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id !== undefined" (click)="updateMicroCategory(micro)">Güncelle</button>
+        <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id === undefined"
+          (click)="addMicroCategory()">Kaydet</button>
+        <button class="btn btn-success" type="button" *ngIf="microIndex === i && micro._id !== undefined"
+          (click)="updateMicroCategory(micro)">Güncelle</button>
         <button class="btn btn-danger" type="button" (click)="removeMicroCategory(i)">Sil</button>
       </div>
     </div>
   </div>
 </div>
-
