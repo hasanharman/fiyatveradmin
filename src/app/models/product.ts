@@ -12,7 +12,7 @@ export class Product {
     images: any;
     categories: Array<string>;
     link: string;
-    cargo: boolean;
+    cargo: string;
     storeId: string;
     availability: boolean;
     details: string;

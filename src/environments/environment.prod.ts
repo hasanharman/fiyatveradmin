@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.fiyatvar.com'
+  apiUrl: 'https://api.fiyatvar.com/'
 };
