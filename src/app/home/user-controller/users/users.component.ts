@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   users: Array<User> = new Array<User>();
   fixedUsers: Array<User> = new Array<User>();
   selectedUser: User = new User();
+  searchText = null;
   constructor(private userService: UserService, private searchService: SearchService) { }
 
   ngOnInit() {
@@ -20,6 +21,10 @@ export class UsersComponent implements OnInit {
       for (let i in e) {
         this.users.push(e[i]);
         this.fixedUsers.push(e[i]);
+      }
+      this.searchText = this.searchService.userText;
+      if (this.searchText) {
+        this.search(this.searchText);
       }
     })
   }
@@ -44,6 +49,8 @@ export class UsersComponent implements OnInit {
   }
 
   search(e) {
+    this.searchService.userText = e;
+    this.searchText = e;
     const searchedIds = this.searchService.search(e, this.fixedUsers);
     let users: Array<User> = new Array<User>();
     this.fixedUsers.forEach(e => {

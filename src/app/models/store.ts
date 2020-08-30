@@ -10,6 +10,7 @@ export class Store {
     storeName?: string;
     tc?: number;
     balance?: number;
+    refCode?: string;
     city?: string;
     country?: string;
     address?: string;
@@ -21,6 +22,7 @@ export class Store {
     xml?: {
       state?: boolean;
       link?: string;
+      _id?: string;
     };
     details?: string;
     eft?: boolean;

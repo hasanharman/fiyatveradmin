@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
   public fixedProducts: Array<Product>;
   public selectedProduct: Product = new Product();
 
+  searchText = null;
   pages: number[] = [];
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -44,6 +45,10 @@ export class ProductsComponent implements OnInit {
       this.total = Math.ceil(e["total"]/12)
       this.calc();
       this.loading = false;
+      this.searchText = this.searchService.productText;
+      if (this.searchText) {
+        this.search(this.searchText);
+      }
     });
     this.categoryService.categories().subscribe(categories => {
       this.categories = categories;
@@ -201,6 +206,8 @@ writeValue(obj: any): void {
   }
 
   search(e) {
+    this.searchService.productText = e;
+    this.searchText = e;
     const searchedIds = this.searchService.search(e, this.fixedProducts);
     let product: Array<Product> = new Array<Product>();
     this.fixedProducts.forEach(e => {

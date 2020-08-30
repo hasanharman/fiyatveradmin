@@ -53,4 +53,8 @@ export class ProductService {
   public removeProduct(id: string): Observable<object> {
     return this.http.post(`${environment.apiUrl}/store/delete/product`, {"_id": id});
   }
+
+  public bestProducts(limit = 5): Observable<object> {
+    return this.http.get(`${environment.apiUrl}/products/best?limit=${limit}`)
+  }
 }

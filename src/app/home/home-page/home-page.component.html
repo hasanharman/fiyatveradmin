@@ -6,7 +6,7 @@
           <img class="card-img-top cardimage" src="/assets/homepage/shop.png" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Mağaza Sayısı</h5>
-            <a class="btn btn-primary" routerLink='/home/shopcontroller/shops'>256</a>
+            <a class="btn btn-primary" routerLink='/home/shopcontroller/shops'>{{storesNumber}}</a>
           </div>
         </div>
       </div>
@@ -15,7 +15,7 @@
           <img class="card-img-top cardimage" src="/assets/homepage/user.png" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Kullanıcı Sayısı</h5>
-            <a class="btn btn-primary" routerLink='/home/usercontroller/users'>3829</a>
+            <a class="btn btn-primary" routerLink='/home/usercontroller/users'>{{usersNumber}}</a>
           </div>
         </div>
       </div>
@@ -24,65 +24,33 @@
           <img class="card-img-top cardimage" src="/assets/homepage/support.png" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Bekleyen Destek Bildirimleri</h5>
-            <a class="btn btn-primary" routerLink='/home/shopcontroller/support'>12</a>
+            <a class="btn btn-primary" routerLink='/home/shopcontroller/support'>{{notifications}}</a>
           </div>
         </div>
       </div>
   </div>
   <!-- second row -->
   <div class="row text-center">
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <h5>Son Haftanın En Çok Tıklananları</h5>
-      <!-- NgFor ya da DB'den gelen ürünlerin listelenmesi için, "badge-pill sayıyı göstermesi için" -->
+      NgFor ya da DB'den gelen ürünlerin listelenmesi için, "badge-pill sayıyı göstermesi için"
       <div class="topcategories">
         <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">121</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">92</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-            <span class="badge badge-primary badge-pill">83</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-            <span class="badge badge-primary badge-pill">71</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-            <span class="badge badge-primary badge-pill">55</span>
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let product of lastProducts">
+            {{product.name}}
+            <span class="badge badge-primary badge-pill">{{product.clickCount}}</span>
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <div class="col-md-4">
       <h5>Top 5 Kategoriler</h5>
       <!-- NgFor ya da DB'den gelen ürünlerin listelenmesi için, "badge-pill sayıyı göstermesi için" -->
       <div class="topcategories">
         <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">1</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">2</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-            <span class="badge badge-primary badge-pill">3</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">4</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">5</span>
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let category of topCategories">
+            {{category.name}}
+            <span class="badge badge-primary badge-pill">{{category.popularity}}</span>
           </li>
         </ul>
       </div>
@@ -92,25 +60,10 @@
       <!-- NgFor ya da DB'den gelen ürünlerin listelenmesi için, "badge-pill sayıyı göstermesi için" -->
       <div class="topcategories">
         <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">1</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">2</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-            <span class="badge badge-primary badge-pill">3</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">4</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">5</span>
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let product of topProducts">
+            {{product.name}}
+            <span class="badge badge-primary badge-pill">{{product.searchCount?.count}}</span>
+            <span class="badge badge-primary badge-pill">{{product.clickCount}}</span>
           </li>
         </ul>
       </div>

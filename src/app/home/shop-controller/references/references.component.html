@@ -11,18 +11,18 @@
       <div class="col-md-5">
         <div class="form-group">
           <label for="yetkili">Referans Kodu Adı</label>
-          <input type="text" class="form-control" id="example" name="firstName" value="">
+          <input type="text" class="form-control" id="example" name="name" [(ngModel)]="name">
         </div>
         <div class="row">
           <h5 style="margin-right: 13%;">Kod Durumu</h5>
           <div class="form-check" style="margin-right: 5%;">
-            <input class="form-check-input" type="radio" name="state" id="exampleRadios1" value=true>
+            <input class="form-check-input" type="radio" name="state" (change)="changeState($event.target.value)" [checked]="state" id="exampleRadios1" value=true>
             <label class="form-check-label" for="exampleRadios1">
               Aktif
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="state" id="exampleRadios2" value=false>
+            <input class="form-check-input" type="radio" name="state" (change)="changeState($event.target.value)" [checked]="!state" id="exampleRadios2" value=false>
             <label class="form-check-label" for="exampleRadios2">
               Pasif
             </label>
@@ -31,44 +31,51 @@
         <div class="form-group">
           <label for="example-datetime-local-input">Kod geçerlilik tarihi</label>
           <div>
-            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00"
+            <input class="form-control" type="datetime-local" [(ngModel)]="date" name="date"
               id="example-datetime-local-input">
           </div>
         </div>
       </div>
       <div class="row">
+        <div class="col-md-11">
+          <div class="form-group">
+            <label for="cost2">Ürün Listeleme Ücreti</label>
+            <input type="number" class="form-control" [(ngModel)]="listingCost" id="listingCost" name="listingCost">
+          </div>
+        </div>
         <div class="col-md-5">
           <div class="form-group">
-            <label for="yetkili">0-100₺ aralık ücreti</label>
-            <input type="text" class="form-control" id="example" name="firstName" value="">
+            <label for="cost2">0-100₺ aralık ücreti</label>
+            <input type="number" class="form-control" [(ngModel)]="costs.cost1" id="cost1" name="cost1">
           </div>
           <div class="form-group">
-            <label for="yetkili">101-250₺ aralık ücreti</label>
-            <input type="text" class="form-control" id="example" name="firstName" value="">
+            <label for="cost2">101-250₺ aralık ücreti</label>
+            <input type="number" class="form-control" [(ngModel)]="costs.cost2" id="cost2" name="cost2">
           </div>
           <div class="form-group">
-            <label for="yetkili">251-500₺ aralık ücreti</label>
-            <input type="text" class="form-control" id="example" name="firstName" value="">
+            <label for="cost3">251-500₺ aralık ücreti</label>
+            <input type="number" class="form-control" [(ngModel)]="costs.cost3" id="cost3" name="cost3">
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="yetkili">501-1000₺ aralık ücreti</label>
-            <input type="text" class="form-control" id="example" name="firstName" value="">
+            <label for="cost4">501-1000₺ aralık ücreti</label>
+            <input type="number" class="form-control" [(ngModel)]="costs.cost4" id="cost4" name="cost4">
           </div>
           <div class="form-group">
-            <label for="yetkili">1001-5000₺ aralık ücreti</label>
-            <input type="text" class="form-control" id="example" name="firstName" value="">
+            <label for="cost5">1001-5000₺ aralık ücreti</label>
+            <input type="number" class="form-control" [(ngModel)]="costs.cost5" id="cost5" name="cost5">
           </div>
           <div class="form-group">
-            <label for="yetkili">+5000₺ aralık ücreti</label>
-            <input type="text" class="form-control" id="example" name="firstName" value="">
+            <label for="cost6">+5000₺ aralık ücreti</label>
+            <input type="number" class="form-control" [(ngModel)]="costs.cost6" id="cost6" name="cost6">
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <button type="button" class="btn btn-success">Kaydet</button>
+    <div class="row" *ngIf="name && date && costs.cost1 && costs.cost2 && costs.cost3 && costs.cost4 && costs.cost5 && costs.cost6">
+      <button *ngIf="!selectedId" type="button" class="btn btn-success" (click)="save()">Kaydet</button>
+      <button *ngIf="selectedId" type="button" class="btn btn-success" (click)="update()">Güncelle</button>
     </div>
 
     <div class="row" style="margin-top: 3%;">
@@ -79,14 +86,14 @@
       <div class="col-md-10">
         <!-- ngFor duyuru döngüsü burada olacak -->
         <div>
-          <div class="input-group">
+          <div class="input-group" *ngFor="let referance of referances">
             <div type="text" class="form-control" placeholder="mağaza adı" aria-label="mağaza adı"
-              aria-describedby="button-addon4">kod1</div>
+              aria-describedby="button-addon4">{{referance.name}}</div>
             <div class="input-group-append" id="button-addon4">
-              <button class="btn btn-warning" type="button">Güncelle</button>
+              <button class="btn btn-warning" type="button" (click)="selectRef(referance)">Güncelle</button>
               <!-- Güncelle Mağaza sayfasına yönlendirir, isme göre yeni sayfa oluşturmalıyız,
                         ya da hidden metodu ile yorumları açacağız  -->
-              <button class="btn btn-danger" type="button">Sil</button>
+              <button class="btn btn-danger" type="button" (click)="delete(referance._id)">Sil</button>
             </div>
           </div>
         </div>

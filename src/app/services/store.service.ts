@@ -76,4 +76,8 @@ export class StoreService {
   public xmlFormatDelete(format): Observable<object> {
     return this.http.post(`${environment.apiUrl}/xml/format/delete`, format);
   }
+
+  public storeCount(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/store/count`);
+  }
 }

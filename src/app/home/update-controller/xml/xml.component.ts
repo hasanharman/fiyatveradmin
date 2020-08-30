@@ -190,17 +190,24 @@ export class XmlComponent implements OnInit {
         this.count++;
       });
     });
-    this.storeService.update({"_id": this.id, "xml": {"state": true, "link": this.link}}).subscribe(e => {
-      if (this.selectedFormat["_id"] === undefined) {
-        $(".addFormat").css({"display": "flex"})
-      } else {
+    if (this.selectedFormat["_id"] === undefined) {
+      $(".addFormat").css({"display": "flex"})
+    } else {
+      this.storeService.update({
+        "_id": this.id,
+        "xml": {
+          "state": true,
+          "link": this.link,
+          "_id": this.selectedFormat["_id"]
+        }
+      }).subscribe(x => {
         if (this.updateState) {
           $(".addFormat").css({"display": "flex"})
         } else {
           this.router.navigate(["/home/shopcontroller/shops"]);
         }
-      }
-    });    
+      })
+    }
   }
 
   addFormat(state) {
@@ -209,16 +216,24 @@ export class XmlComponent implements OnInit {
         this.selectedFormat.path = this.path;
         this.selectedFormat.name = this.selectedName;
         this.selectedFormat.format = this.product
-        this.storeService.xmlFormatAdd(this.selectedFormat).subscribe(e => {
+        this.storeService.xmlFormatAdd(this.selectedFormat).subscribe((e: any) => {
           $(".addFormat").css({"display": "none"})
           this.router.navigate(["/home/shopcontroller/shops"]);
+          this.storeService.update({
+            "_id": this.id,
+            "xml": {
+              "state": true,
+              "link": this.link,
+              "_id": e._id
+            }
+          })  
         })
       } else {
         this.selectedFormat.path = this.path;
         this.selectedFormat.name = this.selectedName;
         this.selectedFormat.format = this.product;
         delete this.selectedFormat["__v"];
-        this.storeService.xmlFormatUpdate(this.selectedFormat).subscribe(e => {
+        this.storeService.xmlFormatUpdate(this.selectedFormat).subscribe((e: any) => {
           $(".addFormat").css({"display": "none"})
           this.router.navigate(["/home/shopcontroller/shops"]);
         })

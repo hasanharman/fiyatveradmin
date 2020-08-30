@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from './../../../../environments/environment';
 import { StoreService } from './../../../services/store.service';
@@ -12,8 +13,12 @@ export class ShopsComponent implements OnInit {
   stores = [];
   selectedStore: Store = new Store();
   apiUrl = environment.apiUrl;
-  constructor(public storeService: StoreService, public productService: ProductService) {
+  referances = [];
+  constructor(public storeService: StoreService, public productService: ProductService, private http: HttpClient) {
     this.selectedStore.xml = {"state": undefined, "link": ""}
+    this.http.get(`${environment.apiUrl}/referances`).subscribe((refs: any) => {
+      this.referances = refs.referances;
+    });
   }
 
   ngOnInit() {

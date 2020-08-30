@@ -21,4 +21,7 @@ export class SearchService {
     });
     return queryList;
   }
+
+  userText = null;
+  productText = null;
 }

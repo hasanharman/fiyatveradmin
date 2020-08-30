@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { SearchService } from './../services/search.service';
 import { Admin } from './../models/admin';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
@@ -10,7 +12,9 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   public admin: Admin
-  constructor(private authService: AuthService) {
+  productText;
+  userText;
+  constructor(private authService: AuthService, private searchService: SearchService, private route: Router) {
     try {
       this.admin = JSON.parse(localStorage.getItem('currentUser')).admin;
       console.log(this.admin)
@@ -26,6 +30,16 @@ export class HomeComponent implements OnInit {
       $("#page-content-wrapper").toggleClass("toggled");
     });
     
+  }
+
+  productSearch(text: string) {
+    this.searchService.productText = text;
+    this.route.navigate(["/home/categorycontroller/products"]);
+  }
+
+  userSearch(text: string) {
+    this.searchService.userText = text;
+    this.route.navigate(["/home/usercontroller/users"]);
   }
 
   logout() {

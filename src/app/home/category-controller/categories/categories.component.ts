@@ -13,15 +13,16 @@ export class CategoriesComponent implements OnInit {
   topIndex: number;
   subIndex: number;
   microIndex: number;
-  constructor(private categoryService: CategoryService) {
+  api = environment.apiUrl;
+  constructor(public categoryService: CategoryService) {
     this.categoryService.categories().subscribe(e => {
       this.categories = e;
-      console.log(e);
     });
   }
 
   ngOnInit() {
   }
+
 
   removeCategory(i) {
     const category = this.categories[i].name;
@@ -154,6 +155,25 @@ export class CategoriesComponent implements OnInit {
     this.categoryService.upodateMicroCategory(req).subscribe(e => {
       this.categories[this.topIndex] = e;
     })
+  }
+
+  addCategoryThumbnail(id) {
+    let items = this.categoryService.uploader.queue;
+    items[0].url = `${environment.apiUrl}/category/thumbnail/add?_id=${id}`
+    items[0].file.name = "thumbnail" + id + "." + items[0].file.type.split("/")[1];
+    items[0].upload();
+    this.categoryService.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      if (status === 200 && items[0]) {
+        this.categoryService.categories().subscribe(e => {
+          this.categories = e;
+        });
+      }
+      if (!items[0]) {
+
+      }
+      this.categoryService.uploader.clearQueue();
+      return
+    };
   }
 
 

@@ -22,4 +22,8 @@ export class UserService {
   public remove(id: object): Observable<User> {
     return this.http.post<User>(`${environment.apiUrl}/user/remove`, id);
   }
+
+  public userCount(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/user/count`);
+  }
 }

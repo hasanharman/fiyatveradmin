@@ -1,3 +1,10 @@
 .input-group {
     margin-top: 5px;
 }
+.foto {
+    background-image: url('../../../../assets/homepage/logo.png'); 
+}
+.label-img {
+    display: block;
+    height: 38px;
+}

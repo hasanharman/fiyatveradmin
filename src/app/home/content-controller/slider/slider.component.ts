@@ -20,9 +20,12 @@ export class SliderComponent implements OnInit {
     3: 510,
     4: 300
   }
+  selectedId;
+  url = null;
   api = environment.apiUrl;
   constructor(public sliderService: SliderService) {
     this.sliders = this.sliderService.sliders
+    this.sliderService.uploader.clearQueue();	
   }
 
   ngOnInit() {
@@ -33,12 +36,24 @@ export class SliderComponent implements OnInit {
   }
 
   async updateAll(id) {
-    this.uploader(0, id)
+    let items = this.sliderService.uploader.queue;
+    if (items.length > 0) {
+      this.uploader(0, id)
+    } else {
+      this.sliderService.updateSliderUrl(id, this.url).subscribe(x => {
+        this.sliderService.uploader.clearQueue()
+        this.sliders = this.sliderService.sliders
+        this.slides = undefined;
+        this.url = null;
+      })
+    }
+    
   }
 
   uploader(i, id?) {
+    console.log(this.url);
     let items = this.sliderService.uploader.queue;
-    items[i].url = id ? `${environment.apiUrl}/slider/add?size=${this.selected[i]}&id=${id}` : `${environment.apiUrl}/slider/add?size=${this.selected[i]}`
+    items[i].url = id ? `${environment.apiUrl}/slider/add?size=${this.selected[i]}&id=${id}&url=${this.url}` : `${environment.apiUrl}/slider/add?size=${this.selected[i]}&url=${this.url}`
     items[i].upload()
     console.log(items[i].url)
     console.log(id)
@@ -51,6 +66,7 @@ export class SliderComponent implements OnInit {
         this.sliderService.uploader.clearQueue()
         this.sliders = this.sliderService.sliders
         this.slides = undefined;
+        this.url = null;
       }
   };
     // if (this.selected[i]) {
@@ -72,9 +88,27 @@ export class SliderComponent implements OnInit {
   setSlider(e: {[key: string]: string} | undefined) {
     if (typeof e == 'object') {
       delete e["__v"]
+      this.url = e["url"];
+      delete e["url"];
     }
     this.slides = e;
     this.sliderService.uploader.clearQueue()
+  }
+  
+  deleteSlide(_id, key) {
+    this.sliderService.deleteSlider(_id, key).subscribe(x => {
+      delete this.slides[key];
+    });
+  }
+
+  deleteSlider(_id) {
+    this.sliderService.deleteSliders(_id).subscribe(x => {
+      this.sliders.subscribe((a: any) => {
+        this.sliders = new Observable(o => {
+          o.next(a.filter(r => {return r._id !== _id}));
+        })
+      })
+    });
   }
 
 }
