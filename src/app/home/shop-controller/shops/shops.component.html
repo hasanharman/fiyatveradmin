@@ -38,21 +38,22 @@
       <div class="row">
         <h5 style="margin-right: 5%;">Mağaza durumu</h5>
         <div class="form-check" style="margin-right: 5%;">
-          <input class="form-check-input" type="radio" name="state" id="exampleRadios1" [checked]="selectedStore.state"
-            value=true [(ngModel)]="selectedStore.state">
-          <label class="form-check-label" for="exampleRadios1">
+          <input class="form-check-input" type="radio" name="state" id="activity"
+            [value]="true" [(ngModel)]="selectedStore.state">
+          <label class="form-check-label" for="activity">
             Mağaza Aktif
+            {{selectedStore.state}}
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="state" id="exampleRadios2" [checked]="selectedStore.state"
-            value=false [(ngModel)]="selectedStore.state">
-          <label class="form-check-label" for="exampleRadios2">
+          <input class="form-check-input" type="radio" name="state" id="activity2"
+            [value]="false" [(ngModel)]="selectedStore.state">
+          <label class="form-check-label" for="activity2">
             Mağaza Pasif
           </label>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <h5 style="margin-right: 13%;">Kargo ücreti</h5>
         <div class="form-check" style="margin-right: 5%;">
           <input class="form-check-input" type="radio" name="state" id="exampleRadios1"
@@ -68,7 +69,7 @@
             Alıcı Öder
           </label>
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <h5>Mağaza Ödeme Yöntemleri</h5>
       </div>

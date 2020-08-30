@@ -23,6 +23,7 @@ export class ShopsComponent implements OnInit {
 
   ngOnInit() {
     this.storeService.stores().subscribe(e => {
+      console.log(e)
       for (let i in e) {
         this.stores.push(e[i]);
       }
@@ -31,7 +32,6 @@ export class ShopsComponent implements OnInit {
 
   removeStore(id: String, i: number) {
     this.storeService.remove(id).subscribe(e => {
-      console.log(e);
     });
 
     this.stores.splice(i, 1);
